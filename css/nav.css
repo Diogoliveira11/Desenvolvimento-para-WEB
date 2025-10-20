@@ -1,0 +1,623 @@
+/* ===== SEU CSS ORIGINAL ===== */
+body {
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* CABEÇALHO */
+header {
+  background: rgb(229, 229, 221);
+  color: rgb(86, 86, 86);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  position: relative;
+}
+
+/* BOTÕES */
+.container-botao {
+  display: flex;
+  align-items: right;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+/* BOTÃO LOGIN, SIGNIN E VOLTAR */
+.botao-header {
+  background-color: rgb(200, 200, 178);
+  color: rgb(86, 86, 86);
+  font-weight: bold;
+  font-size: 1.8rem;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border: none;
+}
+
+/* BOTÃO LOGIN, SIGNIN E VOLTAR --> hover */
+.botao-header:hover {
+  background-color: rgb(86, 86, 86);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: 1.8rem;
+  transform: translateY(-2px);
+  transition: transform 0.4s ease;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border: none;
+}
+
+/* BOTÃO SUPORTE */
+.suporte-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* BOTÃO SUPORTE --> hover */
+.suporte-btn:hover {
+  transform: translateY(-2px);
+  transition: transform 0.4s ease;
+  cursor: pointer;
+}
+
+/* GALERIA DAS FOTOS */
+#galeria {
+  display: flex;
+  gap: 2.5rem;
+  justify-content: space-between;
+  margin: 30px 40px 50px 40px;
+}
+
+/* GALERIA DAS FOTOS */
+#galeria .card {
+  width: 100%;
+}
+
+/* GALERIA DAS FOTOS */
+#galeria .card img {
+  width: 100%;
+  object-fit: cover;
+  height: 300px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: block;
+}
+
+/* INFORMAÇÕES ALOJAMENTOS */
+.alojamento-info {
+  background-color: rgb(229, 229, 221);
+  color: rgb(0, 0, 0);
+  padding: 10px 20px 20px 20px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+/* NOME ALOJAMENTOS */
+.alojamento-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(61, 61, 61);
+}
+
+/* LOCALIZAÇÃO ALOJAMENTOS */
+.alojamento-location {
+  color: rgb(71, 71, 71);
+  font-size: 14px;
+}
+
+/* CAPACIDADE ALOJAMENTOS */
+.alojamento-capacity {
+  margin: 0 0 15px 0;
+  color: rgb(112, 112, 112);
+  font-size: 12px;
+}
+
+/* PREÇO */
+.price {
+  text-align: right;
+  display: flex;
+  gap: 7px;
+  justify-content: flex-end;
+  align-items: baseline;
+}
+
+/* ÚLTIMO PREÇO */
+.last-price {
+  margin: 0;
+  font-weight: bold;
+  color: rgb(185, 39, 39);
+  font-size: 14px;
+  text-decoration: line-through;
+}
+
+/* ATUAL PREÇO */
+.actual-price {
+  margin: 0;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  width: 23%;
+  text-decoration: none;
+}
+
+.card-container:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+  box-shadow: 0 3px 3px rgb(112, 112, 112);
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.region-card {
+  display: flex;
+  flex-direction: column;
+  width: 23%;
+  text-decoration: none;
+}
+
+.region-card:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+  box-shadow: 0 3px 3px rgb(112, 112, 112);
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+footer {
+  background: rgb(112, 112, 112);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 3rem;
+}
+
+/* ESTILOS DO MENU DROPDOWN */
+.user-menu-container {
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+}
+
+.user-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: rgb(229, 229, 221);
+  min-width: 280px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  z-index: 1000;
+  padding: 15px 0;
+  border: 1px solid rgb(200, 200, 178);
+}
+
+.user-dropdown.active {
+  display: block;
+  padding: 10px 0px 3px 0px;
+}
+
+.user-dropdown-header {
+  padding: 0px 15px 10px 10px;
+  border-bottom: 1px solid rgb(200, 200, 178);
+  display: flex;
+  align-items: center;
+}
+
+.user-dropdown-header img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: bold;
+  color: rgb(61, 61, 61);
+}
+
+.user-name:hover {
+  background-color: #e9ecef;
+  cursor: pointer;
+}
+
+.user-email {
+  font-size: 12px;
+  color: rgb(112, 112, 112);
+}
+
+.user-email:hover {
+  cursor: pointer;
+}
+
+.user-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.user-dropdown li {
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  color: rgb(71, 71, 71);
+}
+
+.user-dropdown li:hover {
+  background-color: rgb(200, 200, 178);
+}
+
+.user-dropdown li.divider {
+  border-top: 1px solid rgb(200, 200, 178);
+  margin: 5px 0;
+}
+
+.user-dropdown li.logout {
+  text-decoration: none;
+  color: inherit;
+  color: rgb(185, 39, 39);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.text-dropdown {
+  list-style: none;
+  padding: 5px;
+  margin: 0;
+}
+
+.text-dropdown a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.user-btn {
+  display: flex;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.container {
+  margin-top: 40px;
+  max-width: 800px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faq-container {
+  padding: 0;
+}
+
+.main-question {
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  font-weight: bold;
+  background: #f8f9fa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-question:hover {
+  background: #e9ecef;
+}
+
+.main-question::after {
+  content: "▼";
+  font-size: 12px;
+  color: rgb(112, 112, 112);
+}
+
+.subquestions {
+  display: none;
+  background: white;
+}
+
+.subquestion {
+  padding: 14px 25px;
+  border-bottom: 1px solid #f0f0f0;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ===== CSS ADICIONAL PARA PÁGINA DE DETALHES DO HOTEL ===== */
+
+/* Navegação breadcrumb */
+nav {
+  background: rgb(200, 200, 178);
+  padding: 10px 40px;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: rgb(86, 86, 86);
+}
+
+.breadcrumb a {
+  color: rgb(86, 86, 86);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* Galeria de imagens do hotel */
+.hotel-gallery {
+  max-width: 1200px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 8px;
+  height: 500px;
+}
+
+.main-image {
+  grid-row: span 2;
+  background-color: #ddd;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.secondary-image {
+  background-color: #ddd;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.hotel-gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Layout de informações do hotel */
+.hotel-info {
+  max-width: 1200px;
+  margin: 30px auto;
+  display: flex;
+  gap: 30px;
+}
+
+.hotel-details {
+  flex: 2;
+  background: rgb(229, 229, 221);
+  padding: 25px;
+  border-radius: 15px;
+}
+
+.hotel-booking {
+  flex: 1;
+  background: rgb(229, 229, 221);
+  padding: 25px;
+  border-radius: 15px;
+  height: fit-content;
+}
+
+/* Detalhes do hotel */
+.hotel-title {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: rgb(61, 61, 61);
+}
+
+.hotel-location {
+  color: rgb(71, 71, 71);
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.hotel-rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.rating-score {
+  background-color: rgb(200, 200, 178);
+  color: rgb(86, 86, 86);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.rating-text {
+  font-weight: bold;
+  color: rgb(61, 61, 61);
+}
+
+.hotel-description {
+  line-height: 1.6;
+  margin-bottom: 25px;
+  color: rgb(71, 71, 71);
+}
+
+/* Comodidades */
+.amenities {
+  margin-top: 25px;
+}
+
+.amenities h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: rgb(61, 61, 61);
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.amenity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgb(71, 71, 71);
+}
+
+/* Painel de reserva */
+.price-info {
+  background-color: rgb(200, 200, 178);
+  padding: 4px 10px 8px;
+  border-radius: 10px;
+}
+
+.booking-btn {
+  background-color: rgb(200, 200, 178);
+  color: rgb(86, 86, 86);
+  font-weight: bold;
+  border: none;
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.booking-btn:hover {
+  background-color: rgb(86, 86, 86);
+  color: rgb(255, 255, 255);
+  transform: translateY(-2px);
+  transition: transform 0.4s ease;
+}
+
+.free-cancellation {
+  color: rgb(71, 71, 71);
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Títulos de seção */
+.section-title {
+  font-size: 35px;
+  color: rgb(112, 112, 112);
+  font-weight: bold;
+  margin-left: 40px;
+  margin-top: 40px;
+}
+
+.section-subtitle {
+  font-size: 20px;
+  color: rgb(112, 112, 112);
+  font-weight: bold;
+  margin-left: 40px;
+  margin-bottom: 20px;
+}
+
+/* ===== MEDIA QUERIES RESPONSIVAS ===== */
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .hotel-gallery {
+    grid-template-columns: 1fr;
+    grid-template-rows: 300px 150px 150px 150px 150px;
+    height: auto;
+  }
+  
+  .main-image {
+    grid-row: span 1;
+  }
+  
+  .hotel-info {
+    flex-direction: column;
+  }
+  
+  .amenities-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  header {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .container-botao {
+    margin-left: 0;
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .section-title, .section-subtitle {
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .hotel-gallery {
+    height: 400px;
+  }
+  
+  .hotel-info {
+    flex-direction: column;
+  }
+  
+  .card-container, .region-card {
+    width: 48%;
+  }
+  
+  #galeria {
+    flex-wrap: wrap;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .hotel-gallery {
+    height: 450px;
+  }
+  
+  .card-container, .region-card {
+    width: 48%;
+  }
+  
+  #galeria {
+    flex-wrap: wrap;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .hotel-gallery {
+    height: 500px;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .hotel-gallery {
+    height: 550px;
+  }
+}

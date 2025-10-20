@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESPAÇO LUSITANO - PÁGINA INICIAL</title>
+    <link rel="icon" type="image/png" href="imagens/FAVICON.ico">
+    <link rel="stylesheet" href="css/nav.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <header class="container-fluid py-3">        
+        <div class="row align-items-center">
+            <div class="col-auto">
+                <a class="navbar-brand" href="index.html">
+                    <img src="imagens/LOGO MAIOR.png" alt="" width="100" height="auto">
+                </a>
+            </div>
+            
+            <div class="col">
+                <!-- Título principal - aparece apenas em mobile/tablet, desaparece em desktop -->
+                <div class="d-block d-lg-none" style="font-size: 45px; font-weight: bold;">
+                    Encontre a sua próxima estadia
+                </div>
+                <div class="d-block d-xl-none" style="font-size: 25.5px;">
+                    Encontre promoções em hóteis, apartamentos e muito mais...
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <nav class="navbar navbar-expand-lg ms-auto" style="background-color: rgb(229, 229, 221);">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active">
+                                        <a class="botao-header" style="text-decoration: none;" href="login.php" role="button">LOGIN</a>
+                                        <a class="botao-header" style="text-decoration: none;" href="registo.php" role="button">SIGN IN</a>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <li class="nav-item d-flex align-items-center ms-3">
+                            <a href="#" class="nav-link p-0">
+                                <i class="bi bi-person-circle fs-4"></i>
+                            </a>
+                        </li>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <nav style="background: rgb(200, 200, 178); padding: 0px;">&nbsp;</nav>
+
+    <!-- Ofertas do Mês -->
+    <div class="container mt-5">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2 class="section-title">Ofertas do mês</h2>
+                <p class="section-subtitle">Poupe em estadias para este mês de Outubro</p>
+            </div>
+        </div>
+
+        <div class="row align-items-start mt-5">
+            <div class="col-12 col-sm-6 col-lg-3 d-flex justify-content-center mb-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="imagens/HOTELESTACÃO/HOTELESTACAO.png" class="card-img-top" alt="Moov Hotel Lisboa Oriente">
+                    <button class="btn btn-light position-absolute bottom-1 end-0 m-2 rounded-circle shadow-sm favorite-btn">
+                        <i class="bi bi-heart-fill"></i>
+                    </button>
+                    <div class="card-body">
+                        <h5 class="card-title">Moov Hotel Lisboa Oriente</h5>
+                        <p class="card-text">Lisboa, Portugal<br>Quarto para 2 pessoas</p>
+                        <p class="fw-bold">96€ por noite</p>
+                        <a href="#" class="btn btn-primary">Reservar agora</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-3 d-flex justify-content-center mb-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="imagens/hotel-estacao.jpg" class="card-img-top" alt="Hotel Estação">
+                    <button class="btn btn-light position-absolute bottom-1 end-0 m-2 rounded-circle shadow-sm favorite-btn">
+                        <i class="bi bi-heart-fill"></i>
+                    </button>
+                    <div class="card-body">
+                        <h5 class="card-title">Hotel Estação</h5>
+                        <p class="card-text">Braga, Portugal<br>Quarto para 1 pessoa</p>
+                        <p class="fw-bold">96€ por noite</p>
+                        <a href="#" class="btn btn-primary">Reservar agora</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-3 d-flex justify-content-center mb-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="imagens/hotel-lisboa.jpg" class="card-img-top" alt="Hotel Lisboa">
+                    <button class="btn btn-light position-absolute bottom-1 end-0 m-2 rounded-circle shadow-sm favorite-btn">
+                        <i class="bi bi-heart-fill"></i>
+                    </button>
+                    <div class="card-body">
+                        <h5 class="card-title">Hotel Lisboa</h5>
+                        <p class="card-text">Lisboa, Portugal<br>Quarto para 2 pessoas</p>
+                        <p class="fw-bold">136€ por noite</p>
+                        <a href="#" class="btn btn-primary">Reservar agora</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-3 d-flex justify-content-center mb-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="imagens/porto-palacio.jpg" class="card-img-top" alt="Porto Palácio Hotel Editory">
+                    <button class="btn btn-light position-absolute bottom-1 end-0 m-2 rounded-circle shadow-sm favorite-btn">
+                        <i class="bi bi-heart-fill"></i>
+                    </button>
+                    <div class="card-body">
+                        <h5 class="card-title">Porto Palácio Hotel Editory</h5>
+                        <p class="card-text">Porto, Portugal<br>Quarto para 2 pessoas</p>
+                        <p class="fw-bold">136€ por noite</p>
+                        <a href="#" class="btn btn-primary">Reservar agora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alojamentos melhor avaliados -->
+        <div class="row mb-4 mt-5">
+            <div class="col-12">
+                <h2 class="section-title">Alojamentos melhor avaliados</h2>
+                <p class="section-subtitle">Desfrute dos alojamentos mais acolhidos pelos hóspedes</p>
+            </div>
+        </div>
+
+        <div class="row align-items-start mt-3">
+            <div class="col-12 col-sm-6 col-lg-3 d-flex justify-content-center mb-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="imagens/hotel-lisboa-centro.jpg" class="card-img-top" alt="Hotel Lisboa Centro">
+                    <button class="btn btn-light position-absolute bottom-1 end-0 m-2 rounded-circle shadow-sm favorite-btn">
+                        <i class="bi bi-heart-fill"></i>
+                    </button>
+                    <div class="card-body">
+                        <h5 class="card-title">Hotel Lisboa Centro</h5>
+                        <p class="card-text">Lisboa, Portugal<br>Quarto para 2 pessoas</p>
+                        <p class="fw-bold">120€ por noite</p>
+                        <a href="#" class="btn btn-primary">Reservar agora</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-3 d-flex justify-content-center mb-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="imagens/hotel-braga-historia.jpg" class="card-img-top" alt="Hotel Braga História">
+                    <button class="btn btn-light position-absolute bottom-1 end-0 m-2 rounded-circle shadow-sm favorite-btn">
+                        <i class="bi bi-heart-fill"></i>
+                    </button>
+                    <div class="card-body">
+                        <h5 class="card-title">Hotel Braga História</h5>
+                        <p class="card-text">Braga, Portugal<br>Quarto para 2 pessoas</p>
+                        <p class="fw-bold">110€ por noite</p>
+                        <a href="#" class="btn btn-primary">Reservar agora</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-3 d-flex justify-content-center mb-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="imagens/hotel-porto-vista.jpg" class="card-img-top" alt="Hotel Porto Vista">
+                    <button class="btn btn-light position-absolute bottom-1 end-0 m-2 rounded-circle shadow-sm favorite-btn">
+                        <i class="bi bi-heart-fill"></i>
+                    </button>
+                    <div class="card-body">
+                        <h5 class="card-title">Hotel Porto Vista</h5>
+                        <p class="card-text">Porto, Portugal<br>Quarto para 2 pessoas</p>
+                        <p class="fw-bold">125€ por noite</p>
+                        <a href="#" class="btn btn-primary">Reservar agora</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-3 d-flex justify-content-center mb-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="imagens/hotel-algarve-praia.jpg" class="card-img-top" alt="Hotel Algarve Praia">
+                    <button class="btn btn-light position-absolute bottom-1 end-0 m-2 rounded-circle shadow-sm favorite-btn">
+                        <i class="bi bi-heart-fill"></i>
+                    </button>
+                    <div class="card-body">
+                        <h5 class="card-title">Hotel Algarve Praia</h5>
+                        <p class="card-text">Faro, Portugal<br>Quarto para 2 pessoas</p>
+                        <p class="fw-bold">140€ por noite</p>
+                        <a href="#" class="btn btn-primary">Reservar agora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.favorite-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.toggle('active');
+            });
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer class="mt-5 py-4">
+        <div class="container text-center">
+            <p class="mb-1">Diogo Oliveira | a2023120056@alumni.iscac.pt</p>
+            <p class="mb-1">Eduardo Vieira | a2023129589@alumni.iscac.pt</p>
+            <p class="mb-0">&copy; 2025 - ESPAÇO LUSITÂNO</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

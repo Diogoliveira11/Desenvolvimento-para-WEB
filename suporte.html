@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESPAÇO LUSITANO - SUPORTE</title>
+  <link rel="icon" type="image/png" href="imagens/FAVICON.ico">
+  <link rel="stylesheet" href="css/nav.css">
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html">
+        <img src="imagens/LOGO MAIOR.png" style="width: 100px; cursor: pointer;">
+    </a>
+
+        <div>
+            <a style="font-size: 55px; font-weight: bold;">Suporte </a>
+            <a style="font-size: 45px;"> - Esclareça todas as suas questões!</a>
+        </div>
+
+<div class="container-botao">
+    <button onclick="window.history.back()" class="botao-header" type="button">VOLTAR</button>
+</div>
+      
+ </header> 
+    
+  <nav style="background: rgb(200, 200, 178); padding: 1px;">&nbsp;</nav>
+
+  <div class="container">
+        <div style="text-align: center; font-size: 35px; font-weight: bold; background-color: rgb(229, 229, 221); padding: 15px;">Perguntas Frequentes</div>
+           <div class="faq-container">
+            <div class="main-question" onclick="toggleSubquestions('registo')">
+                Como posso registar-me?
+            </div>
+            <div class="subquestions" id="registo">
+                <div class="subquestion">
+                    Pode registar-se clicando no botão "SIGNIN" localizado no canto superior direito na página inicial. Basta preencher o formulário com os seus dados pessoais e confirmar o seu e-mail.
+                </div>
+            </div>
+            
+            <div class="main-question" onclick="toggleSubquestions('entrar')">
+                Como faço o "LOGIN"?
+            </div>
+            <div class="subquestions" id="entrar">
+                <div class="subquestion">
+                    Pode entrar na conta só depois de se ter registado, clicando no botão "LOGIN" localizado no canto superior direito na página inicial. Basta preencher o formulário com os seus dados pessoais com que se registou.
+                </div>   
+            </div>
+
+            <div class="main-question" onclick="toggleSubquestions('contapessoal')">
+                Como posso entrar na conta pessoal?
+            </div>
+            <div class="subquestions" id="contapessoal">
+                <div class="subquestion">
+                    Após fazer "LOGIN", terá acesso á sua área pessoal no canto superior direito.
+                </div>   
+            </div>
+
+            <div class="main-question" onclick="toggleSubquestions('reserva')">
+                Como faço uma reserva?
+            </div>
+            <div class="subquestions" id="reserva">
+                <div class="subquestion">
+                    Após encontrar o alojamento desejado, clique nele para aceder à página de detalhes. Aí, poderá ver todas as informações, fotos e preços. Para reservar, utilize os contactos fornecidos pelo site.
+                </div>
+            </div>
+            
+            <div class="main-question" onclick="toggleSubquestions('historico')">
+                Como posso consultar o histórico de reservas?
+            </div>
+            <div class="subquestions" id="historico">
+                <div class="subquestion">
+                    Para consultar o seu histórico de reservas, basta aceder à sua Área Pessoal (disponível após login) e selecionar a opção "Histórico de Reservas". Aí encontrará uma lista completa de todas as suas reservas anteriores e actuais, com detalhes como datas, valores e estados das reservas.                
+                </div>
+            </div>
+
+            <div class="main-question" onclick="toggleSubquestions('cancelar')">
+                Como posso cancelar ou alterar uma reserva?
+            </div>
+            <div class="subquestions" id="cancelar">
+                <div class="subquestion">
+                    Para cancelar ou alterar uma reserva, terá que contactar o próprio alojamento utilizando os contactos fornecidos pelo site.
+                </div>
+            </div>
+
+            <div class="main-question" onclick="toggleSubquestions('avaliar')">
+                Como posso avaliar um pacote de destino?
+            </div>
+            <div class="subquestions" id="avaliar">
+                <div class="subquestion">
+                    Após ter desfrutado do seu pacote de destino poderá avaliar a sua experiência, acedendo à sua Área Pessoal → Histórico de Reservas e clicar em "Avaliar" junto à reserva concluída. As avaliações ajudam outros viajantes e os anfitriões a melhorarem os seus serviços.                
+                </div>
+            </div>
+
+            <div class="main-question" onclick="toggleSubquestions('notificacoes')">
+                Como funcionam as notificações por e-mail e no navegador?
+            </div>
+            <div class="subquestions" id="notificacoes">
+                <div class="subquestion">
+                    Pode gerir as suas preferências de notificação na sua Área Pessoal → Definições de Notificações. 
+                    Pode optar por receber alertas por e-mail sobre promoções, reservas e actualizações e notificações no navegador para lembrete de check-in, avaliações pendentes e ofertas especiais.            
+                </div>
+            </div>
+
+            <div class="main-question" onclick="toggleSubquestions('redessociais')">
+                Como posso partilhar as minhas viagens nas redes sociais?
+            </div>
+            <div class="subquestions" id="redessociais">
+                <div class="subquestion">
+                    Após fazer "LOGIN", aceda à sua Área Pessoal → As Minhas Viagens. Seleccione a viagem que deseja partilhar e clique no ícone da rede social pretendida (Facebook, Instagram, Twitter, etc.). Pode partilhar tanto reservas futuras como experiências já concluídas.       
+                </div>
+            </div>
+
+            <div class="main-question" onclick="toggleSubquestions('desconto')">
+                Há descontos para a primeira compra?
+            </div>
+            <div class="subquestions" id="desconto">
+                <div class="subquestion">
+                    Sim! Ao criar uma conta e efectuar a sua primeira reserva, recebe automaticamente 10% de desconto.                
+                </div>
+            </div>
+
+            <div class="main-question" onclick="toggleSubquestions('ajuda')">
+                O que devo fazer se tiver problemas técnicos?
+            </div>
+            <div class="subquestions" id="ajuda">
+                <div class="subquestion">
+                    Caso encontre dificuldades, consulte o menu de suporte na barra de navegação. Se o problema persistir, contacte o nosso suporte através do e-mail: suporte@espacolusitano.pt. 
+                </div>
+            </div>
+            
+            <!-- Área para respostas detalhadas -->
+            <div id="detailed-answer-container"></div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSubquestions(category) {       
+            // Alternar a visibilidade da categoria clicada
+            const subquestions = document.getElementById(category);
+            subquestions.style.display = subquestions.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+
+    <p></p>
+
+    <footer>
+        <p>Diogo oliveira | a2023120056@alumni.iscac.pt</p>
+        <p>Eduardo Vieira | a2023129589@alumni.iscac.pt</p>
+        <p>&copy; 2025 - ESPAÇO LUSITÂNO</p>
+    </footer>
+
+  </body>
