@@ -5,151 +5,257 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ESPAÇO LUSITANO - SUPORTE</title>
   <link rel="icon" type="image/png" href="imagens/FAVICON.ico">
-  <link rel="stylesheet" href="css/nav.css">
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    .container {
+      margin-top: 40px;
+      max-width: 800px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .faq-container {
+      padding: 0;
+    }
+
+    .main-question {
+      padding: 16px 20px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      font-weight: bold;
+      background: #f8f9fa;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .main-question:hover {
+      background: #e9ecef;
+    }
+
+    .main-question::after {
+      content: "▼";
+      font-size: 12px;
+      color: rgb(112, 112, 112);
+    }
+
+    .subquestions {
+      display: none;
+      background: white;
+    }
+
+    .subquestion {
+      padding: 14px 25px;
+      border-bottom: 1px solid #f0f0f0;
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  </style>
 </head>
 
 <body>
 
-  <header>
-    <a href="index.html">
-        <img src="imagens/LOGO MAIOR.png" style="width: 100px; cursor: pointer;">
-    </a>
-
-        <div>
-            <a style="font-size: 55px; font-weight: bold;">Suporte </a>
-            <a style="font-size: 45px;"> - Esclareça todas as suas questões!</a>
-        </div>
-
-<div class="container-botao">
-    <button onclick="window.history.back()" class="botao-header" type="button">VOLTAR</button>
-</div>
+  <!-- Header Corrigido -->
+  <header class="w-full py-3 relative bg-[#e5e5dd]">
+    <div class="flex items-center justify-between px-4 lg:px-6">
       
- </header> 
-    
-  <nav style="background: rgb(200, 200, 178); padding: 1px;">&nbsp;</nav>
+      <!-- Logo e título à esquerda -->
+      <div class="flex items-center space-x-2 md:space-x-3 lg:space-x-4 flex-shrink-0 max-w-[60%] md:max-w-[70%]">
+        <a href="index.html">
+          <img src="imagens/LOGO MAIOR.png" alt="Logo" class="w-12 sm:w-14 md:w-16 lg:w-20 h-auto">
+        </a>
+        <div class="flex flex-col truncate">
+          <h1 class="text-sm sm:text-base md:text-lg lg:text-2xl xl:text-4xl font-bold text-[#565656] truncate">
+            SUPORTE
+          </h1>
+          <p class="hidden sm:block text-xs md:text-sm lg:text-base xl:text-xl text-[#707070] truncate">
+            Esclareca todas as suas dúvidas!
+          </p>
+        </div>
+      </div>
+  
+      <!-- Botões e suporte (desktop) -->
+      <div class="hidden md:flex items-center space-x-1 lg:space-x-2 xl:space-x-4 flex-shrink-0">
+        <a href="login.php" 
+           class="bg-[#c8c8b2] text-[#565656] font-bold rounded-lg px-2 py-1 lg:px-3 lg:py-2 xl:px-4 text-xs lg:text-base xl:text-lg
+                  hover:bg-[#565656] hover:text-white hover:-translate-y-0.5 transition-transform duration-300 whitespace-nowrap">
+          LOGIN
+        </a>
+  
+        <a href="registo.php" 
+           class="bg-[#c8c8b2] text-[#565656] font-bold rounded-lg px-2 py-1 lg:px-3 lg:py-2 xl:px-4 text-xs lg:text-base xl:text-lg
+                  hover:bg-[#565656] hover:text-white hover:-translate-y-0.5 transition-transform duration-300 whitespace-nowrap">
+          SIGNIN
+        </a>
+
+        <a onclick="window.history.back()" 
+           class="bg-[#c8c8b2] text-[#565656] font-bold rounded-lg px-2 py-1 lg:px-3 lg:py-2 xl:px-4 text-xs lg:text-base xl:text-lg
+                  hover:bg-[#565656] hover:text-white hover:-translate-y-0.5 transition-transform duration-300 whitespace-nowrap">
+          VOLTAR
+        </a>
+      </div>
+  
+      <!-- Hamburger menu (mobile) - SEMPRE VISÍVEL EM MOBILE -->
+      <div class="md:hidden flex items-center ml-2 flex-shrink-0">
+        <button id="menu-btn" class="text-3xl text-[#565656] focus:outline-none">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </div>
+  
+    <!-- Dropdown menu mobile -->
+    <div id="mobile-menu" class="hidden absolute top-full right-4 w-48 bg-[#c8c8b2] rounded-b-lg shadow-lg flex flex-col p-2 space-y-2 md:hidden z-50">
+      <a href="login.php" class="bg-[#c8c8b2] text-[#565656] font-bold px-4 py-2 rounded hover:bg-[#565656] hover:text-white transition-transform duration-200 ease-in-out">LOGIN</a>
+      <a href="registo.php" class="bg-[#c8c8b2] text-[#565656] font-bold px-4 py-2 rounded hover:bg-[#565656] hover:text-white transition-transform duration-200 ease-in-out">SIGN IN</a>
+      <a onclick="window.history.back()" class="bg-[#c8c8b2] text-[#565656] font-bold px-4 py-2 rounded hover:bg-[#565656] hover:text-white transition-transform duration-200 ease-in-out">VOLTAR</a>
+    </div>
+  </header>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+
+  <nav class="h-2 bg-[#c8c8b2]"></nav>
 
   <div class="container">
-        <div style="text-align: center; font-size: 35px; font-weight: bold; background-color: rgb(229, 229, 221); padding: 15px;">Perguntas Frequentes</div>
-           <div class="faq-container">
-            <div class="main-question" onclick="toggleSubquestions('registo')">
-                Como posso registar-me?
-            </div>
-            <div class="subquestions" id="registo">
-                <div class="subquestion">
-                    Pode registar-se clicando no botão "SIGNIN" localizado no canto superior direito na página inicial. Basta preencher o formulário com os seus dados pessoais e confirmar o seu e-mail.
-                </div>
-            </div>
-            
-            <div class="main-question" onclick="toggleSubquestions('entrar')">
-                Como faço o "LOGIN"?
-            </div>
-            <div class="subquestions" id="entrar">
-                <div class="subquestion">
-                    Pode entrar na conta só depois de se ter registado, clicando no botão "LOGIN" localizado no canto superior direito na página inicial. Basta preencher o formulário com os seus dados pessoais com que se registou.
-                </div>   
-            </div>
-
-            <div class="main-question" onclick="toggleSubquestions('contapessoal')">
-                Como posso entrar na conta pessoal?
-            </div>
-            <div class="subquestions" id="contapessoal">
-                <div class="subquestion">
-                    Após fazer "LOGIN", terá acesso á sua área pessoal no canto superior direito.
-                </div>   
-            </div>
-
-            <div class="main-question" onclick="toggleSubquestions('reserva')">
-                Como faço uma reserva?
-            </div>
-            <div class="subquestions" id="reserva">
-                <div class="subquestion">
-                    Após encontrar o alojamento desejado, clique nele para aceder à página de detalhes. Aí, poderá ver todas as informações, fotos e preços. Para reservar, utilize os contactos fornecidos pelo site.
-                </div>
-            </div>
-            
-            <div class="main-question" onclick="toggleSubquestions('historico')">
-                Como posso consultar o histórico de reservas?
-            </div>
-            <div class="subquestions" id="historico">
-                <div class="subquestion">
-                    Para consultar o seu histórico de reservas, basta aceder à sua Área Pessoal (disponível após login) e selecionar a opção "Histórico de Reservas". Aí encontrará uma lista completa de todas as suas reservas anteriores e actuais, com detalhes como datas, valores e estados das reservas.                
-                </div>
-            </div>
-
-            <div class="main-question" onclick="toggleSubquestions('cancelar')">
-                Como posso cancelar ou alterar uma reserva?
-            </div>
-            <div class="subquestions" id="cancelar">
-                <div class="subquestion">
-                    Para cancelar ou alterar uma reserva, terá que contactar o próprio alojamento utilizando os contactos fornecidos pelo site.
-                </div>
-            </div>
-
-            <div class="main-question" onclick="toggleSubquestions('avaliar')">
-                Como posso avaliar um pacote de destino?
-            </div>
-            <div class="subquestions" id="avaliar">
-                <div class="subquestion">
-                    Após ter desfrutado do seu pacote de destino poderá avaliar a sua experiência, acedendo à sua Área Pessoal → Histórico de Reservas e clicar em "Avaliar" junto à reserva concluída. As avaliações ajudam outros viajantes e os anfitriões a melhorarem os seus serviços.                
-                </div>
-            </div>
-
-            <div class="main-question" onclick="toggleSubquestions('notificacoes')">
-                Como funcionam as notificações por e-mail e no navegador?
-            </div>
-            <div class="subquestions" id="notificacoes">
-                <div class="subquestion">
-                    Pode gerir as suas preferências de notificação na sua Área Pessoal → Definições de Notificações. 
-                    Pode optar por receber alertas por e-mail sobre promoções, reservas e actualizações e notificações no navegador para lembrete de check-in, avaliações pendentes e ofertas especiais.            
-                </div>
-            </div>
-
-            <div class="main-question" onclick="toggleSubquestions('redessociais')">
-                Como posso partilhar as minhas viagens nas redes sociais?
-            </div>
-            <div class="subquestions" id="redessociais">
-                <div class="subquestion">
-                    Após fazer "LOGIN", aceda à sua Área Pessoal → As Minhas Viagens. Seleccione a viagem que deseja partilhar e clique no ícone da rede social pretendida (Facebook, Instagram, Twitter, etc.). Pode partilhar tanto reservas futuras como experiências já concluídas.       
-                </div>
-            </div>
-
-            <div class="main-question" onclick="toggleSubquestions('desconto')">
-                Há descontos para a primeira compra?
-            </div>
-            <div class="subquestions" id="desconto">
-                <div class="subquestion">
-                    Sim! Ao criar uma conta e efectuar a sua primeira reserva, recebe automaticamente 10% de desconto.                
-                </div>
-            </div>
-
-            <div class="main-question" onclick="toggleSubquestions('ajuda')">
-                O que devo fazer se tiver problemas técnicos?
-            </div>
-            <div class="subquestions" id="ajuda">
-                <div class="subquestion">
-                    Caso encontre dificuldades, consulte o menu de suporte na barra de navegação. Se o problema persistir, contacte o nosso suporte através do e-mail: suporte@espacolusitano.pt. 
-                </div>
-            </div>
-            
-            <!-- Área para respostas detalhadas -->
-            <div id="detailed-answer-container"></div>
+    <div style="text-align: center; font-size: 35px; font-weight: bold; background-color: rgb(229, 229, 221); padding: 15px;">Perguntas Frequentes</div>
+    <div class="faq-container">
+      <div class="main-question" onclick="toggleSubquestions('registo')">
+        Como posso registar-me?
+      </div>
+      <div class="subquestions" id="registo">
+        <div class="subquestion">
+          Pode registar-se clicando no botão "SIGNIN" localizado no canto superior direito na página inicial. Basta preencher o formulário com os seus dados pessoais e confirmar o seu e-mail.
         </div>
+      </div>
+      
+      <div class="main-question" onclick="toggleSubquestions('entrar')">
+        Como faço o "LOGIN"?
+      </div>
+      <div class="subquestions" id="entrar">
+        <div class="subquestion">
+          Pode entrar na conta só depois de se ter registado, clicando no botão "LOGIN" localizado no canto superior direito na página inicial. Basta preencher o formulário com os seus dados pessoais com que se registou.
+        </div>   
+      </div>
+
+      <div class="main-question" onclick="toggleSubquestions('contapessoal')">
+        Como posso entrar na conta pessoal?
+      </div>
+      <div class="subquestions" id="contapessoal">
+        <div class="subquestion">
+          Após fazer "LOGIN", terá acesso á sua área pessoal no canto superior direito.
+        </div>   
+      </div>
+
+      <div class="main-question" onclick="toggleSubquestions('reserva')">
+        Como faço uma reserva?
+      </div>
+      <div class="subquestions" id="reserva">
+        <div class="subquestion">
+          Após encontrar o alojamento desejado, clique nele para aceder à página de detalhes. Aí, poderá ver todas as informações, fotos e preços. Para reservar, utilize os contactos fornecidos pelo site.
+        </div>
+      </div>
+      
+      <div class="main-question" onclick="toggleSubquestions('historico')">
+        Como posso consultar o histórico de reservas?
+      </div>
+      <div class="subquestions" id="historico">
+        <div class="subquestion">
+          Para consultar o seu histórico de reservas, basta aceder à sua Área Pessoal (disponível após login) e selecionar a opção "Histórico de Reservas". Aí encontrará uma lista completa de todas as suas reservas anteriores e actuais, com detalhes como datas, valores e estados das reservas.                
+        </div>
+      </div>
+
+      <div class="main-question" onclick="toggleSubquestions('cancelar')">
+        Como posso cancelar ou alterar uma reserva?
+      </div>
+      <div class="subquestions" id="cancelar">
+        <div class="subquestion">
+          Para cancelar ou alterar uma reserva, terá que contactar o próprio alojamento utilizando os contactos fornecidos pelo site.
+        </div>
+      </div>
+
+      <div class="main-question" onclick="toggleSubquestions('avaliar')">
+        Como posso avaliar um pacote de destino?
+      </div>
+      <div class="subquestions" id="avaliar">
+        <div class="subquestion">
+          Após ter desfrutado do seu pacote de destino poderá avaliar a sua experiência, acedendo à sua Área Pessoal → Histórico de Reservas e clicar em "Avaliar" junto à reserva concluída. As avaliações ajudam outros viajantes e os anfitriões a melhorarem os seus serviços.                
+        </div>
+      </div>
+
+      <div class="main-question" onclick="toggleSubquestions('notificacoes')">
+        Como funcionam as notificações por e-mail e no navegador?
+      </div>
+      <div class="subquestions" id="notificacoes">
+        <div class="subquestion">
+          Pode gerir as suas preferências de notificação na sua Área Pessoal → Definições de Notificações. 
+          Pode optar por receber alertas por e-mail sobre promoções, reservas e actualizações e notificações no navegador para lembrete de check-in, avaliações pendentes e ofertas especiais.            
+        </div>
+      </div>
+
+      <div class="main-question" onclick="toggleSubquestions('redessociais')">
+        Como posso partilhar as minhas viagens nas redes sociais?
+      </div>
+      <div class="subquestions" id="redessociais">
+        <div class="subquestion">
+          Após fazer "LOGIN", aceda à sua Área Pessoal → As Minhas Viagens. Seleccione a viagem que deseja partilhar e clique no ícone da rede social pretendida (Facebook, Instagram, Twitter, etc.). Pode partilhar tanto reservas futuras como experiências já concluídas.       
+        </div>
+      </div>
+
+      <div class="main-question" onclick="toggleSubquestions('desconto')">
+        Há descontos para a primeira compra?
+      </div>
+      <div class="subquestions" id="desconto">
+        <div class="subquestion">
+          Sim! Ao criar uma conta e efectuar a sua primeira reserva, recebe automaticamente 10% de desconto.                
+        </div>
+      </div>
+
+      <div class="main-question" onclick="toggleSubquestions('ajuda')">
+        O que devo fazer se tiver problemas técnicos?
+      </div>
+      <div class="subquestions" id="ajuda">
+        <div class="subquestion">
+          Caso encontre dificuldades, consulte o menu de suporte na barra de navegação. Se o problema persistir, contacte o nosso suporte através do e-mail: suporte@espacolusitano.pt. 
+        </div>
+      </div>
+      
+      <!-- Área para respostas detalhadas -->
+      <div id="detailed-answer-container"></div>
     </div>
+  </div>
 
-    <script>
-        function toggleSubquestions(category) {       
-            // Alternar a visibilidade da categoria clicada
-            const subquestions = document.getElementById(category);
-            subquestions.style.display = subquestions.style.display === 'block' ? 'none' : 'block';
-        }
-    </script>
+  <script>
+    function toggleSubquestions(category) {       
+      // Alternar a visibilidade da categoria clicada
+      const subquestions = document.getElementById(category);
+      subquestions.style.display = subquestions.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
 
-    <p></p>
+  <p></p>
 
-    <footer>
-        <p>Diogo oliveira | a2023120056@alumni.iscac.pt</p>
-        <p>Eduardo Vieira | a2023129589@alumni.iscac.pt</p>
-        <p>&copy; 2025 - ESPAÇO LUSITÂNO</p>
-    </footer>
+  <footer class="mt-10 py-6 text-center text-gray-700 bg-[#e5e5dd]">
+    <p class="mb-1">Diogo Oliveira | a2023120056@alumni.iscac.pt</p>
+    <p class="mb-1">Eduardo Vieira | a2023129589@alumni.iscac.pt</p>
+    <p class="mb-0">&copy; 2025 - ESPAÇO LUSITÂNO</p>
+  </footer>
 
-  </body>
+</body>
