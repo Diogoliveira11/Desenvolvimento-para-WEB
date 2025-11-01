@@ -17,7 +17,6 @@
       max-width: 800px;
       background: white;
       border-radius: 15px;
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       width: 90%;
       margin-left: auto;
@@ -62,64 +61,64 @@
       justify-content: space-between;
       align-items: center;
     }
+
   </style>
 </head>
 
 <body>
 
   <!-- Header Corrigido -->
-  <header class="w-full py-3 relative bg-[#e5e5dd]">
-    <div class="flex items-center justify-between px-4 lg:px-6">
+  <header class="w-full py-3 relative bg-[#e5e5dd] header-compact">
+    <div class="flex items-center justify-between px-2 sm:px-3 lg:px-5 xl:px-6">
       
       <!-- Logo e título à esquerda -->
-      <div class="flex items-center space-x-2 md:space-x-3 lg:space-x-4 flex-shrink-0 max-w-[60%] md:max-w-[70%]">
+      <div class="flex items-center space-x-2 sm:space-x-3 lg:space-x-4 flex-shrink-0 logo-title">
         <a href="index.html">
           <img src="imagens/LOGO MAIOR.png" alt="Logo" class="w-12 sm:w-14 md:w-16 lg:w-20 h-auto">
         </a>
-        <div class="flex flex-col truncate">
-          <h1 class="text-sm sm:text-base md:text-lg lg:text-2xl xl:text-4xl font-bold text-[#565656] truncate">
-            SUPORTE
+        <div class="flex flex-col">
+          <h1 class="text-4xl font-bold text-[#565656]">
+            Suporte
           </h1>
-          <p class="hidden sm:block text-xs md:text-sm lg:text-base xl:text-xl text-[#707070] truncate">
-            Esclareca todas as suas dúvidas!
+          
+          <p class="hidden sm:block text-xs md:text-base lg:text-xl text-[#707070]">
+            Esclareça todas as suas dúvidas!
           </p>
         </div>
       </div>
   
       <!-- Botões e suporte (desktop) -->
-      <div class="hidden md:flex items-center space-x-1 lg:space-x-2 xl:space-x-4 flex-shrink-0">
+      <div class="hidden md:flex items-center space-x-2 lg:space-x-3 xl:space-x-4 flex-shrink-0">
         <a href="login.php" 
-           class="bg-[#c8c8b2] text-[#565656] font-bold rounded-lg px-2 py-1 lg:px-3 lg:py-2 xl:px-4 text-xs lg:text-base xl:text-lg
-                  hover:bg-[#565656] hover:text-white hover:-translate-y-0.5 transition-transform duration-300 whitespace-nowrap">
+           class="bg-[#c8c8b2] text-[#565656] font-bold rounded-lg px-2 py-1 lg:px-3 lg:py-2 xl:px-4 text-sm lg:text-base xl:text-lg
+                  hover:bg-[#565656] hover:text-white hover:-translate-y-0.5 transition-transform duration-300">
           LOGIN
         </a>
   
         <a href="registo.php" 
-           class="bg-[#c8c8b2] text-[#565656] font-bold rounded-lg px-2 py-1 lg:px-3 lg:py-2 xl:px-4 text-xs lg:text-base xl:text-lg
-                  hover:bg-[#565656] hover:text-white hover:-translate-y-0.5 transition-transform duration-300 whitespace-nowrap">
+           class="bg-[#c8c8b2] text-[#565656] font-bold rounded-lg px-2 py-1 lg:px-3 lg:py-2 xl:px-4 text-sm lg:text-base xl:text-lg
+                  hover:bg-[#565656] hover:text-white hover:-translate-y-0.5 transition-transform duration-300">
           SIGNIN
         </a>
-
-        <a onclick="window.history.back()" 
-           class="bg-[#c8c8b2] text-[#565656] font-bold rounded-lg px-2 py-1 lg:px-3 lg:py-2 xl:px-4 text-xs lg:text-base xl:text-lg
-                  hover:bg-[#565656] hover:text-white hover:-translate-y-0.5 transition-transform duration-300 whitespace-nowrap">
-          VOLTAR
-        </a>
+  
+        <a onclick="window.history.back()" class="bg-[#c8c8b2] text-[#565656] font-bold rounded-lg px-2 py-1 lg:px-3 lg:py-2 xl:px-4 text-xs lg:text-base xl:text-lg hover:bg-[#565656] hover:text-white hover:-translate-y-0.5 transition-transform duration-300 whitespace-nowrap cursor-pointer"> VOLTAR </a>
       </div>
   
       <!-- Hamburger menu (mobile) - SEMPRE VISÍVEL EM MOBILE -->
-      <div class="md:hidden flex items-center ml-2 flex-shrink-0">
-        <button id="menu-btn" class="text-3xl text-[#565656] focus:outline-none">
+      <div class="md:hidden flex items-center ml-1 flex-shrink-0">
+        <button id="menu-btn" class="text-xl sm:text-2xl lg:text-3xl text-[#565656] focus:outline-none">
           <i class="bi bi-list"></i>
         </button>
       </div>
     </div>
   
     <!-- Dropdown menu mobile -->
-    <div id="mobile-menu" class="hidden absolute top-full right-4 w-48 bg-[#c8c8b2] rounded-b-lg shadow-lg flex flex-col p-2 space-y-2 md:hidden z-50">
-      <a href="login.php" class="bg-[#c8c8b2] text-[#565656] font-bold px-4 py-2 rounded hover:bg-[#565656] hover:text-white transition-transform duration-200 ease-in-out">LOGIN</a>
-      <a href="registo.php" class="bg-[#c8c8b2] text-[#565656] font-bold px-4 py-2 rounded hover:bg-[#565656] hover:text-white transition-transform duration-200 ease-in-out">SIGN IN</a>
-      <a onclick="window.history.back()" class="bg-[#c8c8b2] text-[#565656] font-bold px-4 py-2 rounded hover:bg-[#565656] hover:text-white transition-transform duration-200 ease-in-out">VOLTAR</a>
+    <div id="mobile-menu" class="hidden absolute top-full right-4 sm:right-6 lg:right-8 w-44 sm:w-48 bg-[#c8c8b2] rounded-b-lg shadow-lg flex flex-col p-2 space-y-2 md:hidden z-50">
+      <a href="login.php" class="bg-[#c8c8b2] text-[#565656] font-bold px-3 py-2 rounded hover:bg-[#565656] hover:text-white transition-transform duration-200 ease-in-out text-sm">LOGIN</a>
+      <a href="registo.php" class="bg-[#c8c8b2] text-[#565656] font-bold px-3 py-2 rounded hover:bg-[#565656] hover:text-white transition-transform duration-200 ease-in-out text-sm">SIGN IN</a>
+      <a href="suporte.html" class="bg-[#c8c8b2] text-[#565656] font-bold px-3 py-2 rounded hover:bg-[#565656] hover:text-white transition-transform duration-200 ease-in-out flex items-center justify-center text-sm">
+        <i class="bi bi-question-circle-fill text-lg mr-1"></i> Suporte
+      </a>
     </div>
   </header>
 
@@ -134,10 +133,12 @@
 
   <nav class="h-2 bg-[#c8c8b2]"></nav>
 
-  <div class="container">
-    <div style="text-align: center; font-size: 35px; font-weight: bold; background-color: rgb(229, 229, 221); padding: 15px;">Perguntas Frequentes</div>
-    <div class="faq-container">
-      <div class="main-question" onclick="toggleSubquestions('registo')">
+  <div class="container max-w-3xl w-full mx-auto my-6 mt-10 bg-white rounded-lg px-4 sm:px-6 overflow-hidden">
+    <div class="text-center font-bold bg-[#e5e5dd] py-4 text-2xl sm:text-3xl sm:py-6 rounded-t-lg">
+      Perguntas Frequentes
+    </div>
+    <div class="faq-container rounded-b-lg">
+      <div class="main-question rounded-t-lg" onclick="toggleSubquestions('registo')">
         Como posso registar-me?
       </div>
       <div class="subquestions" id="registo">
@@ -232,7 +233,7 @@
         O que devo fazer se tiver problemas técnicos?
       </div>
       <div class="subquestions" id="ajuda">
-        <div class="subquestion">
+        <div class="subquestion rounded-b-lg">
           Caso encontre dificuldades, consulte o menu de suporte na barra de navegação. Se o problema persistir, contacte o nosso suporte através do e-mail: suporte@espacolusitano.pt. 
         </div>
       </div>
@@ -252,10 +253,11 @@
 
   <p></p>
 
-  <footer class="mt-10 py-6 text-center text-gray-700 bg-[#e5e5dd]">
-    <p class="mb-1">Diogo Oliveira | a2023120056@alumni.iscac.pt</p>
-    <p class="mb-1">Eduardo Vieira | a2023129589@alumni.iscac.pt</p>
-    <p class="mb-0">&copy; 2025 - ESPAÇO LUSITÂNO</p>
-  </footer>
+    <!-- Footer -->
+    <footer class="mt-4 sm:mt-6 lg:mt-8 py-2 sm:py-4 lg:py-6 text-center text-gray-700 bg-[#e5e5dd]">
+      <p class="mb-1 sm:mb-2 text-xs sm:text-sm lg:text-base">Diogo Oliveira | a2023120056@alumni.iscac.pt</p>
+      <p class="mb-1 sm:mb-2 text-xs sm:text-sm lg:text-base">Eduardo Vieira | a2023129589@alumni.iscac.pt</p>
+      <p class="mb-0 text-xs sm:text-sm lg:text-base">&copy; 2025 - ESPAÇO LUSITÂNO</p>
+    </footer>
 
 </body>

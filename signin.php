@@ -9,9 +9,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $pass = $_POST['pass'];
     
-    // Verifica se já existe
-    $check_sql = "SELECT * FROM utilizadores WHERE utilizador = '$utilizador' OR email = '$email'";
-    $check_result = mysqli_query($link, $check_sql);
+    // ✅ CORREÇÃO: Usar iduser em vez de id
+    $stmt = mysqli_prepare($link, "SELECT iduser FROM utilizadores WHERE utilizador = ? OR email = ?");
+    mysqli_stmt_bind_param($stmt, "ss", $utilizador, $email);
+    mysqli_stmt_execute($stmt);
+    $check_result = mysqli_stmt_get_result($stmt);
     
     if (mysqli_num_rows($check_result) > 0) {
         $erro = "Utilizador ou email já existem!";
@@ -19,11 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Encriptar a password
         $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
         
-        // Insere novo utilizador
-        $insert_sql = "INSERT INTO utilizadores (utilizador, email, pass) VALUES ('$utilizador', '$email', '$pass_hash')";
+        // ✅ SEGURO - Insere novo utilizador com Prepared Statement
+        $stmt = mysqli_prepare($link, "INSERT INTO utilizadores (utilizador, email, pass) VALUES (?, ?, ?)");
+        mysqli_stmt_bind_param($stmt, "sss", $utilizador, $email, $pass_hash);
         
-        if (mysqli_query($link, $insert_sql)) {
-            // ✅ CORREÇÃO: Redireciona para o LOGIN, não para a página inicial
+        if (mysqli_stmt_execute($stmt)) {
             header("Location: login.php?sucesso=1");
             exit();
         } else {
@@ -36,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registo</title>
+    <title>SIGNIN</title>
     <style>
         body { font-family: Arial; max-width: 400px; margin: 50px auto; padding: 20px; }
         input { width: 100%; padding: 10px; margin: 5px 0; }
@@ -45,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
-    <h2>Registo</h2>
+    <h2>SIGNIN</h2>
     <?php if (!empty($erro)) echo "<p class='erro'>$erro</p>"; ?>
     <form method="POST">
         <input type="text" name="utilizador" placeholder="Utilizador" required>

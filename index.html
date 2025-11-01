@@ -8,188 +8,13 @@
 
   <!-- Tailwind via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Bootstrap Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-  
-  <style>
-    /* CORREÇÃO: Prevenir overflow horizontal de forma mais eficaz */
-    html, body {
-      overflow-x: hidden;
-      max-width: 100%;
-      position: relative;
-    }
-    
-    /* Container principal para prevenir overflow */
-    .container-overflow {
-      overflow-x: hidden;
-    }
-    
-    /* Estilos para o carrossel*/
-    .carrossel {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      gap: 1.5rem;
-      padding: 1rem 0.5rem;
-      margin: 0 -0.5rem;
-    }
-    
-    .carrossel::-webkit-scrollbar {
-      height: 6px;
-    }
-    
-    .carrossel::-webkit-scrollbar-track {
-      background: #f1f1f1;
-      border-radius: 10px;
-    }
-    
-    .carrossel::-webkit-scrollbar-thumb {
-      background: #c8c8b2;
-      border-radius: 10px;
-    }
-    
-    .carrossel::-webkit-scrollbar-thumb:hover {
-      background: #565656;
-    }
-    
-    .carrossel-item {
-      flex: 0 0 auto;
-      width: 85%;
-      max-width: 300px;
-      scroll-snap-align: start;
-      transition: transform 0.3s ease;
-    }
-    
-    .carrossel-item:hover {
-      transform: translateY(-5px);
-    }
-    
-    /* Indicadores do carrossel */
-    .carrossel-indicators {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 1rem;
-    }
-    
-    .carrossel-indicator {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: #c8c8b2;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    
-    .carrossel-indicator.active {
-      background-color: #565656;
-    }
-    
-    /* Esconder scrollbar em alguns navegadores */
-    .carrossel {
-      -ms-overflow-style: none;
-      scrollbar-width: thin;
-      scrollbar-color: #c8c8b2 #f1f1f1;
-    }
-    
-    /* Para tablets */
-    @media (min-width: 640px) {
-      .carrossel {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        overflow-x: visible;
-        gap: 1.5rem;
-        padding: 0;
-        margin: 0;
-      }
-      .carrossel-item {
-        width: 100%;
-        max-width: none;
-      }
-      .carrossel-indicators {
-        display: none;
-      }
-    }
-    
-    /* Para desktop médio */
-    @media (min-width: 1024px) {
-      .carrossel {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-      }
-    }
-    
-    /* Para desktop grande */
-    @media (min-width: 1280px) {
-      .carrossel {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-    
-    /* Ajustes para telas muito pequenas */
-    @media (max-width: 380px) {
-      .carrossel-item {
-        width: 80%;
-        max-width: 280px;
-      }
-      
-      /* Header mais compacto */
-      .header-compact {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-      
-      .header-compact .logo-title h1 {
-        font-size: 0.875rem;
-        line-height: 1.25rem;
-      }
-      
-      /* Títulos das seções */
-      .section-title {
-        font-size: 1.125rem;
-        line-height: 1.75rem;
-      }
-      
-      .section-subtitle {
-        font-size: 0.75rem;
-        line-height: 1rem;
-      }
-      
-      /* Botões VER MAIS mais compactos */
-      .btn-compact {
-        padding-left: 0.75rem;
-        padding-right: 0.75rem;
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-        font-size: 0.75rem;
-      }
-      
-      /* Reduzir gap entre título e botão */
-      .title-btn-gap {
-        gap: 0.5rem;
-      }
-      
-      /* Imagens menores em telas muito pequenas */
-      .carrossel-item img {
-        height: 10rem;
-      }
-    }
-
-    /* Ajuste extra para telas entre 380px e 640px */
-    @media (min-width: 381px) and (max-width: 639px) {
-      .carrossel-item {
-        width: 83%;
-      }
-    }
-  </style>
 </head>
+
 
 <body class="bg-gray-50 font-sans container-overflow">
   <!-- Header -->
   <header class="w-full py-3 relative bg-[#e5e5dd] header-compact">
-    <div class="flex items-center justify-between px-4 sm:px-6 lg:px-8 xl:px-12">
+    <div class="flex items-center justify-between px-2 sm:px-3 lg:px-5 xl:px-6">
       
       <!-- Logo e título à esquerda -->
       <div class="flex items-center space-x-2 sm:space-x-3 lg:space-x-4 flex-shrink-0 logo-title">
@@ -214,7 +39,7 @@
           LOGIN
         </a>
   
-        <a href="registo.php" 
+        <a href="signin.php" 
            class="bg-[#c8c8b2] text-[#565656] font-bold rounded-lg px-2 py-1 lg:px-3 lg:py-2 xl:px-4 text-sm lg:text-base xl:text-lg
                   hover:bg-[#565656] hover:text-white hover:-translate-y-0.5 transition-transform duration-300">
           SIGNIN
@@ -234,14 +59,35 @@
       </div>
     </div>
   
-    <!-- Dropdown menu mobile -->
-    <div id="mobile-menu" class="hidden absolute top-full right-4 sm:right-6 lg:right-8 w-44 sm:w-48 bg-[#c8c8b2] rounded-b-lg shadow-lg flex flex-col p-2 space-y-2 md:hidden z-50">
-      <a href="login.php" class="bg-[#c8c8b2] text-[#565656] font-bold px-3 py-2 rounded hover:bg-[#565656] hover:text-white transition-transform duration-200 ease-in-out text-sm">LOGIN</a>
-      <a href="registo.php" class="bg-[#c8c8b2] text-[#565656] font-bold px-3 py-2 rounded hover:bg-[#565656] hover:text-white transition-transform duration-200 ease-in-out text-sm">SIGN IN</a>
-      <a href="suporte.html" class="bg-[#c8c8b2] text-[#565656] font-bold px-3 py-2 rounded hover:bg-[#565656] hover:text-white transition-transform duration-200 ease-in-out flex items-center justify-center text-sm">
-        <i class="bi bi-question-circle-fill text-lg mr-1"></i> Suporte
-      </a>
-    </div>
+<!-- Versão com ícones e posição ajustada -->
+<div id="mobile-menu" class="hidden md:hidden absolute top-16 right-4 sm:right-6 lg:right-8 w-44 sm:w-48 bg-white rounded-lg shadow-xl border border-gray-200 z-50">
+  <div class="py-2">
+    <!-- Login -->
+    <a href="login.php" class="flex items-center px-4 py-2 text-sm text-[#565656] hover:bg-[#e5e5dd] font-medium transition-colors duration-200">
+      <svg class="w-4 h-4 mr-3 stroke-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+      </svg>
+      LOGIN
+    </a>
+    
+    <!-- Sign In -->
+    <a href="signin.php" class="flex items-center px-4 py-2 text-sm text-[#565656] hover:bg-[#e5e5dd] font-medium transition-colors duration-200">
+      <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+      </svg>
+      SIGNIN
+    </a>
+    
+    <!-- Suporte -->
+    <a href="suporte.html" class="flex items-center px-4 py-2 text-sm text-[#565656] hover:bg-[#e5e5dd] font-medium transition-colors duration-200">
+      <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      SUPORTE
+    </a>
+  </div>
+</div>
+
   </header>
 
 <script>
@@ -570,7 +416,7 @@
 </section>
 
   <!-- Footer -->
-  <footer class="mt-8 sm:mt-12 lg:mt-16 py-6 sm:py-8 lg:py-10 text-center text-gray-700 bg-[#e5e5dd]">
+  <footer class="mt-4 sm:mt-6 lg:mt-8 py-2 sm:py-4 lg:py-6 text-center text-gray-700 bg-[#e5e5dd]">
     <p class="mb-1 sm:mb-2 text-xs sm:text-sm lg:text-base">Diogo Oliveira | a2023120056@alumni.iscac.pt</p>
     <p class="mb-1 sm:mb-2 text-xs sm:text-sm lg:text-base">Eduardo Vieira | a2023129589@alumni.iscac.pt</p>
     <p class="mb-0 text-xs sm:text-sm lg:text-base">&copy; 2025 - ESPAÇO LUSITÂNO</p>
