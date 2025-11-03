@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Header com Títulos e Botão da Casa -->
     <div class="bg-gradient-to-r from-[#d8d8c8] to-[#c8c8b2] p-8 text-center text-[#707070] relative">
       <!-- Botão da casa com cores suaves -->
-      <a href="index.html" class="absolute top-4 right-4 w-10 h-10 bg-gradient-to-br from-[#a8a892] to-[#989882] rounded-full flex items-center justify-center hover:from-[#989882] hover:to-[#a8a892] transition duration-300 shadow-lg text-white">
+      <a href="index.php" class="absolute top-4 right-4 w-10 h-10 bg-gradient-to-br from-[#a8a892] to-[#989882] rounded-full flex items-center justify-center hover:from-[#989882] hover:to-[#a8a892] transition duration-300 shadow-lg text-white">
         <i class="bi bi-house text-lg"></i>
       </a>
       

@@ -422,10 +422,10 @@ if (!$sessao_valida) {
           carrossel.addEventListener('scroll', function() {
             const scrollPos = carrossel.scrollLeft;
             const itemWidth = carrossel.querySelector('div').offsetWidth + 24;
-            const activeIndex = Math.round(scrollPos / itemWidth);
+            const activePagInicial = Math.round(scrollPos / itemWidth);
             
-            indicators.forEach((indicator, index) => {
-              if (index === activeIndex) {
+            indicators.forEach((indicator, paginicial) => {
+              if (paginicial === activePagInicial) {
                 indicator.classList.add('bg-[#565656]');
                 indicator.classList.remove('bg-[#c8c8b2]');
               } else {
@@ -436,11 +436,11 @@ if (!$sessao_valida) {
           });
 
           // Navegação por cliques nos indicadores
-          indicators.forEach((indicator, index) => {
+          indicators.forEach((indicator, paginicial) => {
             indicator.addEventListener('click', function() {
               const itemWidth = carrossel.querySelector('div').offsetWidth + 24;
               carrossel.scrollTo({
-                left: index * itemWidth,
+                left: paginicial * itemWidth,
                 behavior: 'smooth'
               });
             });

@@ -14,7 +14,7 @@
 <body>
 
   <header>
-    <a href="index.html">
+    <a href="index.php">
         <img src="imagens/LOGO MAIOR.png" style="width: 100px; cursor: pointer;" alt="Espaço Lusitano">
     </a>
 
