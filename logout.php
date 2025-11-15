@@ -1,14 +1,14 @@
 <?php
-// logout.php
-session_start();
+session_start(); 
 
-// Limpa todas as variáveis de sessão
-$_SESSION = array();
+    // Apaga todas as variáveis da sessão
+    $_SESSION = array();
 
-// Destrói a sessão
-session_destroy();
+    // Destrói a sessão
+    session_unset();
+    session_destroy();
 
-// Redireciona para a página de login
-header("Location: index.php");
-exit();
+    // Redireciona para o index
+    header("Location: index.php");
+    exit();
 ?>
