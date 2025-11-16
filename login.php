@@ -1,23 +1,27 @@
 <?php
+// ---- INÍCIO DO CÓDIGO PHP ----
+
+// 1. LÓGICA DE PROCESSAMENTO (TUDO AQUI NO TOPO)
 session_start(); 
 require 'dbconnection.php';
 
+// 2. Inicializar variáveis que o HTML (a "vista") vai precisar
 $erro = "";
+$mensagem_sucesso = "";
 
-// MOSTRAR MENSAGEM DE SUCESSO APÓS REGISTO
+// 3. Processar Lógica GET (ex: vindo do registo)
 if (isset($_GET['sucesso']) && $_GET['sucesso'] == 1) {
     $mensagem_sucesso = "Conta criada com sucesso! Pode fazer login.";
-    
-    // ⭐ DEFINIR O DESCONTO SÓ AQUI! ⭐
-    $_SESSION['DESCONTO_PRIMEIRA_VEZ'] = true;
 }
 
-// MOSTRAR MENSAGEM DE ERRO
+// 4. Processar Lógica GET (ex: vindo de erro de login antigo)
 if (isset($_GET['erro']) && $_GET['erro'] == 1) {
     $erro = "Utilizador e/ou password incorretos!";
 }
 
+// 5. Processar Lógica POST (tentativa de login)
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
     $utilizador = trim($_POST['utilizador']);
     $pass = $_POST['pass'];
 
@@ -28,6 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if ($result && mysqli_num_rows($result) == 1) {
         $user = mysqli_fetch_assoc($result);
+        
         if (password_verify($pass, $user['pass'])) {
             
             // TUDO CORRETO, DEFINIR SESSÃO:
@@ -35,22 +40,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['utilizador'] = $user['utilizador'];
             $_SESSION['logado'] = true;
             
-            // ⭐ A FLAG DO DESCONTO ESTÁ AQUI ⭐
-            $_SESSION['DESCONTO_PENDENTE'] = true;
-            unset($_SESSION['DESCONTO_ATIVO']);
+            // ⭐ LÓGICA DE DESCONTO (APENAS SESSÃO) ⭐
+            
+            // 1. Verifica se é o primeiro login de sempre (flag do signin.php)
+            if (isset($_SESSION['NOVO_REGISTO']) && $_SESSION['NOVO_REGISTO'] === true) {
+                
+                // 2. ATIVA O DESCONTO (para o banner do perfil)
+                $_SESSION['DESCONTO_ATIVO'] = true;
+                
+                // 3. ATIVA O MODAL (para o paginainicial.php)
+                $_SESSION['DESCONTO_PENDENTE'] = true;
+                
+                // 4. Limpa a flag de 1ª vez (para não voltar a dar)
+                unset($_SESSION['NOVO_REGISTO']);
 
+            } else {
+                // Se não é o 1º login, garante que o modal de boas-vindas não aparece
+                unset($_SESSION['DESCONTO_PENDENTE']);
+                
+                // Nota: O DESCONTO_ATIVO vai ser limpo no logout,
+                // por isso não precisamos de o limpar aqui.
+            }
+            
+            // Se o login for bem-sucedido, REDIRECIONA e PARA.
             header("Location: paginainicial.php");
-exit();
+            exit(); 
 
         } else {
+            // Se o login falhar, define a variável de erro para o HTML
             $erro = "Utilizador e/ou password incorretos!";
         }
     } else {
+        // Se o login falhar, define a variável de erro para o HTML
         $erro = "Utilizador e/ou password incorretos!";
     }
 }
-?>
 
+// 6. SE O SCRIPT CHEGAR AQUI, é porque não houve redirect (é um GET ou um POST falhado)
+// O HTML (VISTA) será desenhado abaixo.
+
+// ---- FIM DO CÓDIGO PHP ----
+?>
 <!DOCTYPE html>
 <html lang="pt-pt">
 <head>
@@ -78,7 +108,8 @@ exit();
         </div>
 
         <div class="p-9">
-            <?php if (isset($mensagem_sucesso)): ?>
+            
+            <?php if (!empty($mensagem_sucesso)): ?>
             <div class="bg-green-50 border-l-4 border-green-500 text-green-700 p-4 rounded-lg mb-6 flex items-center">
                 <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -86,6 +117,7 @@ exit();
                 <span><?php echo $mensagem_sucesso; ?></span>
             </div>
             <?php endif; ?>
+            
             <?php if (!empty($erro)): ?>
             <div class="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 rounded-lg mb-6 flex items-center">
                 <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -94,6 +126,7 @@ exit();
                 <span><?php echo $erro; ?></span>
             </div>
             <?php endif; ?>
+            
             <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="space-y-6">
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">

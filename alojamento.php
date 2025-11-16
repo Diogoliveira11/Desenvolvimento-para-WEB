@@ -35,7 +35,7 @@
           ENTRAR
         </a>
   
-        <a onclick="window.history.back()" class="bg-[#c8c8b2] text-[#565656] font-bold rounded-lg px-2 py-1 lg:px-3 lg:py-2 xl:px-4 text-sm lg:text-base xl:text-lg hover:bg-[#565656] hover:text-white hover:-translate-y-0.5 transition-transform duration-300 whitespace-nowrap cursor-pointer"> 
+        <a class="js-voltar bg-[#c8c8b2] text-[#565656] font-bold rounded-lg px-2 py-1 lg:px-3 lg:py-2 xl:px-4 text-sm lg:text-base xl:text-lg hover:bg-[#565656] hover:text-white hover:-translate-y-0.5 transition-transform duration-300 whitespace-nowrap cursor-pointer"> 
           VOLTAR 
         </a>
       </div>
@@ -58,7 +58,7 @@
           ENTRAR
         </a>
         
-        <a onclick="window.history.back()" class="flex items-center px-4 py-2 text-sm text-[#565656] hover:bg-[#e5e5dd] font-medium transition-colors duration-200 cursor-pointer">
+        <a class="js-voltar flex items-center px-4 py-2 text-sm text-[#565656] hover:bg-[#e5e5dd] font-medium transition-colors duration-200 cursor-pointer">
           <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
           </svg>
@@ -211,10 +211,10 @@
         <img src="imagens/MOOVHOTEL/HOTELMOOV2.png" alt="Detalhe 2" class="w-full h-auto object-cover rounded-lg">
         <img src="imagens/MOOVHOTEL/HOTELMOOV3.png" alt="Detalhe 3" class="w-full h-auto object-cover rounded-lg">
         <img src="imagens/MOOVHOTEL/HOTELMOOV4.png" alt="Detalhe 4" class="w-full h-auto object-cover rounded-lg">
-        <img src="imagens/MOOVHOTEL/HOTELMOOV5.png" alt="Detalhe 1" class="w-full h-auto object-cover rounded-lg">
-        <img src="imagens/MOOVHOTEL/HOTELMOOV6.png" alt="Detalhe 2" class="w-full h-auto object-cover rounded-lg">
-        <img src="imagens/MOOVHOTEL/HOTELMOOV7.png" alt="Detalhe 3" class="w-full h-auto object-cover rounded-lg">
-        <img src="imagens/MOOVHOTEL/HOTELMOOV8.png" alt="Detalhe 4" class="w-full h-auto object-cover rounded-lg">
+        <img src="imagens/MOOVHOTEL/HOTELMOOV5.png" alt="Detalhe 5" class="w-full h-auto object-cover rounded-lg">
+        <img src="imagens/MOOVHOTEL/HOTELMOOV6.png" alt="Detalhe 6" class="w-full h-auto object-cover rounded-lg">
+        <img src="imagens/MOOVHOTEL/HOTELMOOV7.png" alt="Detalhe 7" class="w-full h-auto object-cover rounded-lg">
+        <img src="imagens/MOOVHOTEL/HOTELMOOV8.png" alt="Detalhe 8" class="w-full h-auto object-cover rounded-lg">
       </div>
     </div>
   </div>
@@ -226,54 +226,7 @@
     <p class="mb-0 text-xs sm:text-sm lg:text-base">&copy; 2025 - ESPAÇO LUSITANO</p>
   </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      
-      // --- Lógica do Menu Mobile ---
-      const menuBtn = document.getElementById('menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-      
-      if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener('click', function(event) {
-          event.stopPropagation(); 
-          mobileMenu.classList.toggle('hidden');
-        });
-      }
-      
-      // --- Lógica da Galeria ---
-      const openBtn = document.getElementById('open-gallery-btn');
-      const closeBtn = document.getElementById('close-gallery-btn');
-      const modal = document.getElementById('gallery-modal');
-      
-      if(openBtn && closeBtn && modal) {
-        // 1. Abrir modal
-        openBtn.addEventListener('click', function() {
-          modal.classList.remove('hidden');
-        });
-        
-        // 2. Fechar no botão 'X'
-        closeBtn.addEventListener('click', function() {
-          modal.classList.add('hidden');
-        });
-        
-        // 3. Fechar ao clicar no fundo preto
-        modal.addEventListener('click', function(event) {
-          if (event.target === modal) {
-            modal.classList.add('hidden');
-          }
-        });
-      }
-
-      // --- Lógica de Fechar Menus ao Clicar Fora  ---
-      document.addEventListener('click', function(event) {
-        // Fechar menu mobile
-        if (mobileMenu && !mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && !menuBtn.contains(event.target)) {
-          mobileMenu.classList.add('hidden');
-        }
-      });
-      
-    });
-  </script>
+  <script src="js/global.js" defer></script>
 
 </body>
 </html>

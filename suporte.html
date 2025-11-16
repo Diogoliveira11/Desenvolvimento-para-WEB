@@ -37,7 +37,7 @@
           ENTRAR
         </a>
         
-        <a onclick="window.history.back()" class="bg-[#c8c8b2] text-[#565656] font-bold rounded-lg px-2 py-1 lg:px-3 lg:py-2 xl:px-4 text-sm lg:text-base xl:text-lg hover:bg-[#565656] hover:text-white hover:-translate-y-0.5 transition-transform duration-300 whitespace-nowrap cursor-pointer">
+        <a class="js-voltar bg-[#c8c8b2] text-[#565656] font-bold rounded-lg px-2 py-1 lg:px-3 lg:py-2 xl:px-4 text-sm lg:text-base xl:text-lg hover:bg-[#565656] hover:text-white hover:-translate-y-0.5 transition-transform duration-300 whitespace-nowrap cursor-pointer">
            VOLTAR
         </a>
       </div>
@@ -61,7 +61,7 @@
           ENTRAR
         </a>
         
-        <a onclick="window.history.back()" class="flex items-center px-4 py-2 text-sm text-[#565656] hover:bg-[#e5e5dd] font-medium transition-colors duration-200 cursor-pointer">
+        <a class="js-voltar flex items-center px-4 py-2 text-sm text-[#565656] hover:bg-[#e5e5dd] font-medium transition-colors duration-200 cursor-pointer">
           <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
              <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
           </svg>
@@ -71,26 +71,6 @@
       </div>
     </div>
   </header>
-
-  <script>
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    // Script do menu mobile
-    if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener('click', (event) => {
-            event.stopPropagation();
-            mobileMenu.classList.toggle('hidden');
-        });
-    }
-
-    // Fechar menu se clicar fora
-    document.addEventListener('click', function(event) {
-        if (mobileMenu && !mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && !menuBtn.contains(event.target)) {
-            mobileMenu.classList.add('hidden');
-        }
-    });
-  </script>
 
   <nav class="h-2 bg-[#c8c8b2]"></nav>
 
@@ -203,12 +183,7 @@
     </div>
   </div>
 
-  <script>
-    function toggleSubquestions(category) {       
-      const subquestions = document.getElementById(category);
-      subquestions.style.display = subquestions.style.display === 'block' ? 'none' : 'block';
-    }
-  </script>
+  <script src="js/global.js" defer></script>
 
   <p></p>
 

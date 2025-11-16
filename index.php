@@ -394,25 +394,8 @@
   </footer>
 
 
-  <script>
-    // Script para scroll suave nos carrosseis
-    document.addEventListener('DOMContentLoaded', function() {
-      const carrosseis = document.querySelectorAll('.flex.overflow-x-auto');
-      
-      carrosseis.forEach(carrossel => {
-        carrossel.style.scrollBehavior = 'smooth';
-        carrossel.style.WebkitOverflowScrolling = 'touch';
-      });
-    });
-    
-    // Script do menu mobile (agora só existe aqui, removido o duplicado)
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
+    <script src="js/global.js" defer></script>
 
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-  </script>
   
 </body>
 </html>

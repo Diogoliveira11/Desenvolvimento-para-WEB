@@ -456,86 +456,41 @@ require 'dbconnection.php';
     <p class="mb-0 text-xs sm:text-sm lg:text-base">&copy; 2025 - ESPAÇO LUSITANO</p>
   </footer>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-      
-    // Lógica dos Menus
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const profileBtnDesktop = document.getElementById('profile-btn-desktop');
-    const profileDropdownDesktop = document.getElementById('profile-dropdown-desktop');
+  <script src="js/global.js" defer></script>
     
-    // Script do Menu Mobile (Hamburger)
-    if (menuBtn && mobileMenu) {
-      menuBtn.addEventListener('click', (event) => {
-        event.stopPropagation(); 
-        if (profileDropdownDesktop && !profileDropdownDesktop.classList.contains('hidden')) {
-            profileDropdownDesktop.classList.add('hidden');
-        }
-        mobileMenu.classList.toggle('hidden');
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          const modal = document.getElementById('desconto-modal');
+          const fecharModalBtn = document.getElementById('fechar-modal-btn');
+          
+          function fecharModal() {
+            if (modal) {
+              modal.classList.add('hidden');
+              sessionStorage.setItem('viuModalDesconto', 'true'); 
+            }
+          }
+
+          if (modal && fecharModalBtn) {
+            fecharModalBtn.addEventListener('click', fecharModal);
+            modal.addEventListener('click', function(event) {
+              if (event.target === modal) {
+                fecharModal();
+              }
+            });
+          }
+          
+          // --- LÓGICA DO MODAL (PHP) ---
+          <?php
+          if (isset($mostrar_modal_desconto) && $mostrar_modal_desconto === true) {
+              echo "
+              if (modal && !sessionStorage.getItem('viuModalDesconto')) {
+                  modal.classList.remove('hidden');
+              }
+              ";
+          }
+          ?>
       });
-    }
+    </script>
 
-    // Script do Menu de Perfil (Desktop)
-    if (profileBtnDesktop && profileDropdownDesktop) {
-      profileBtnDesktop.addEventListener('click', (event) => {
-        event.stopPropagation(); 
-        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-            mobileMenu.classList.add('hidden');
-        }
-        profileDropdownDesktop.classList.toggle('hidden');
-      });
-    }
-
-    // Fechar menus se clicar fora
-    document.addEventListener('click', function(event) {
-      if (mobileMenu && !mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && !menuBtn.contains(event.target)) {
-        mobileMenu.classList.add('hidden');
-      }
-      if (profileDropdownDesktop && !profileDropdownDesktop.classList.contains('hidden') && !profileDropdownDesktop.contains(event.target) && !profileBtnDesktop.contains(event.target)) {
-        profileDropdownDesktop.classList.add('hidden');
-      }
-    });
-
-    // --- Lógica dos Carrosséis
-    const carrosseis = document.querySelectorAll('.flex.overflow-x-auto');
-    carrosseis.forEach(carrossel => {
-      carrossel.style.scrollBehavior = 'smooth';
-      carrossel.style.WebkitOverflowScrolling = 'touch';
-    });
-
-
-    // --- LÓGICA DO MODAL
-    const modal = document.getElementById('desconto-modal');
-    const fecharModalBtn = document.getElementById('fechar-modal-btn');
-
-    function fecharModal() {
-      if (modal) {
-        modal.classList.add('hidden');
-        sessionStorage.setItem('viuModalDesconto', 'true'); 
-      }
-    }
-
-    if (modal && fecharModalBtn) {
-      fecharModalBtn.addEventListener('click', fecharModal);
-      modal.addEventListener('click', function(event) {
-        if (event.target === modal) {
-          fecharModal();
-        }
-      });
-    }
-    
-    // --- LÓGICA DO MODAL (PHP) ---
-    <?php
-    if (isset($mostrar_modal_desconto) && $mostrar_modal_desconto === true) {
-        echo "
-        if (modal && !sessionStorage.getItem('viuModalDesconto')) {
-            modal.classList.remove('hidden');
-        }
-        ";
-    }
-    ?>
-  });
-</script>
 </body>
 </html>

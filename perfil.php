@@ -206,47 +206,7 @@ if ($result && mysqli_num_rows($result) == 1) {
     <p class="mb-0 text-xs sm:text-sm lg:text-base">&copy; 2025 - ESPAÇO LUSITANO</p>
   </footer>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
+  <script src="js/global.js" defer></script>
 
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const profileBtnDesktop = document.getElementById('profile-btn-desktop');
-    const profileDropdownDesktop = document.getElementById('profile-dropdown-desktop');
-
-    // Lógica para o menu mobile (ícone "hamburguer")
-    if (menuBtn && mobileMenu) {
-      menuBtn.addEventListener('click', function(event) {
-        event.stopPropagation(); 
-        mobileMenu.classList.toggle('hidden');
-        if (profileDropdownDesktop) {
-            profileDropdownDesktop.classList.add('hidden');
-        }
-      });
-    }
-
-    // Lógica para o menu de perfil desktop (ícone de utilizador)
-    if (profileBtnDesktop && profileDropdownDesktop) {
-      profileBtnDesktop.addEventListener('click', function(event) {
-        event.stopPropagation();
-        profileDropdownDesktop.classList.toggle('hidden');
-        if (mobileMenu) {
-            mobileMenu.classList.add('hidden');
-        }
-      });
-    }
-
-    document.addEventListener('click', function(event) {
-      if (mobileMenu && !mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && !menuBtn.contains(event.target)) {
-        mobileMenu.classList.add('hidden');
-      }
-
-      if (profileDropdownDesktop && !profileDropdownDesktop.classList.contains('hidden') && !profileDropdownDesktop.contains(event.target) && !profileBtnDesktop.contains(event.target)) {
-        profileDropdownDesktop.classList.add('hidden');
-      }
-    });
-
-  });
-</script>
 </body>
 </html>
