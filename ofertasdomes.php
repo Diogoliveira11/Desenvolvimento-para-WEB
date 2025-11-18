@@ -7,7 +7,6 @@
   <link rel="icon" type="image/png" href="imagens/FAVICON.ico">
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   
   </head>
 
@@ -43,8 +42,10 @@
       </div>
   
       <div class="md:hidden flex items-center ml-1 flex-shrink-0">
-        <button id="menu-btn" class="text-xl sm:text-2xl lg:text-3xl text-[#565656] focus:outline-none">
-          <i class="bi bi-list"></i>
+        <button id="menu-btn" class="text-[#565656] focus:outline-none">
+          <svg class="w-7 h-7 sm:w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
         </button>
       </div>
     </div>

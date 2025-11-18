@@ -1,27 +1,12 @@
 <?php session_start(); 
 require 'dbconnection.php';
 
-    // Variável para controlar o modal
-    $mostrar_modal_desconto = false;
-
-    // LÓGICA DE "APANHAR" A FLAG PENDENTE
-    if (isset($_SESSION['DESCONTO_PENDENTE']) && $_SESSION['DESCONTO_PENDENTE'] === true) {
-        $mostrar_modal_desconto = true;
-        
-        unset($_SESSION['DESCONTO_PENDENTE']); 
-        $_SESSION['DESCONTO_ATIVO'] = true;   
-    }
-
-    // Verifica se o utilizador está logado
     if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
-        header("Location: login.php"); // Redireciona para o login se não estiver logado
+        header("Location: login.php"); 
         exit();
     }
 
-    // Obtém o nome do utilizador da sessão para o mostrar
     $nomeUtilizador = htmlspecialchars($_SESSION['utilizador']);
-
-    $data_attr_modal = $mostrar_modal_desconto ? 'true' : 'false';
 ?>
 
 <!DOCTYPE html>
@@ -32,11 +17,10 @@ require 'dbconnection.php';
   <title>PÁGINA INICIAL - ESPAÇO LUSITANO</title>
   <link rel="icon" type="image/png" href="imagens/FAVICON.ico">
 
-  <link href="css/nav.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script> 
 </head>
     
-<body class="bg-gray-50 font-sans" data-mostrar-modal="<?php echo $data_attr_modal; ?>">
+<body class="bg-gray-50 font-sans">
   <header class="w-full py-3 relative bg-[#e5e5dd] header-compact">
     <div class="flex items-center justify-between px-2 sm:px-3 lg:px-5 xl:px-6">
       
@@ -109,7 +93,7 @@ require 'dbconnection.php';
           <span class="text-sm font-bold text-[#565656]"><?php echo $nomeUtilizador; ?></span>
         </a>
         
-        <a href="suporte.html" class="flex items-center px-4 py-2 text-sm text-[#565656] hover:bg-[#e5e5dd] font-medium transition-colors duration-200">
+        <a href="suporte.php" class="flex items-center px-4 py-2 text-sm text-[#565656] hover:bg-[#e5e5dd] font-medium transition-colors duration-200">
           <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
@@ -167,7 +151,7 @@ require 'dbconnection.php';
             </div>
           </div>
         </a>
-        <a href="alojamento.php" class="w-[85%] max-w-[300px] flex-shrink-0 snap-start transition-transform duration-300 hover:translate-y-[-5px] md:w-full md:max-w-none md:flex-shrink bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer flex flex-col">
+        <a href="#" class="w-[85%] max-w-[300px] flex-shrink-0 snap-start transition-transform duration-300 hover:translate-y-[-5px] md:w-full md:max-w-none md:flex-shrink bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer flex flex-col">
           <img src="imagens/HOTELLISBOA/HOTELLISBOA.png" class="w-full h-40 sm:h-48 md:h-56 object-cover">
           <div class="p-3 sm:p-4 bg-[#f5f5f2] flex flex-col flex-1 justify-between">
             <div class="flex-shrink-0">
@@ -191,7 +175,7 @@ require 'dbconnection.php';
             </div>
           </div>
         </a>
-        <a href="alojamento.php" class="w-[85%] max-w-[300px] flex-shrink-0 snap-start transition-transform duration-300 hover:translate-y-[-5px] md:w-full md:max-w-none md:flex-shrink bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer flex flex-col">
+        <a href="#" class="w-[85%] max-w-[300px] flex-shrink-0 snap-start transition-transform duration-300 hover:translate-y-[-5px] md:w-full md:max-w-none md:flex-shrink bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer flex flex-col">
           <img src="imagens/HOTELLISBOA/HOTELLISBOA.png" class="w-full h-40 sm:h-48 md:h-56 object-cover">
           <div class="p-3 sm:p-4 bg-[#f5f5f2] flex flex-col flex-1 justify-between">
             <div class="flex-shrink-0">
@@ -215,7 +199,7 @@ require 'dbconnection.php';
             </div>
           </div>
         </a>
-        <a href="alojamento.php" class="w-[85%] max-w-[300px] flex-shrink-0 snap-start transition-transform duration-300 hover:translate-y-[-5px] md:w-full md:max-w-none md:flex-shrink bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer flex flex-col">
+        <a href="#" class="w-[85%] max-w-[300px] flex-shrink-0 snap-start transition-transform duration-300 hover:translate-y-[-5px] md:w-full md:max-w-none md:flex-shrink bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer flex flex-col">
           <img src="imagens/HOTELLISBOA/HOTELLISBOA.png" class="w-full h-40 sm:h-48 md:h-56 object-cover">
           <div class="p-3 sm:p-4 bg-[#f5f5f2] flex flex-col flex-1 justify-between">
             <div class="flex-shrink-0">
@@ -254,7 +238,7 @@ require 'dbconnection.php';
       </div>
       <div class="flex overflow-x-auto snap-x snap-mandatory scroll-behavior-smooth -webkit-overflow-scrolling-touch gap-6 p-4 mx-[-0.5rem] scrollbar-thin md:grid md:grid-cols-2 md:overflow-x-visible md:gap-6 md:p-0 md:mx-0 lg:grid-cols-4">
         
-        <a href="alojamento.php" class="w-[85%] max-w-[300px] flex-shrink-0 snap-start transition-transform duration-300 hover:translate-y-[-5px] md:w-full md:max-w-none md:flex-shrink bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer flex flex-col">
+        <a href="#" class="w-[85%] max-w-[300px] flex-shrink-0 snap-start transition-transform duration-300 hover:translate-y-[-5px] md:w-full md:max-w-none md:flex-shrink bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer flex flex-col">
             <img src="imagens/HOTELLISBOA/HOTELLISBOA.png" class="w-full h-40 sm:h-48 md:h-56 object-cover">
             <div class="p-3 sm:p-4 bg-[#f5f5f2] flex flex-col flex-1 justify-between">
             <div class="flex-shrink-0">
@@ -277,7 +261,7 @@ require 'dbconnection.php';
             </div>
             </div>
         </a>
-        <a href="alojamento.php" class="w-[85%] max-w-[300px] flex-shrink-0 snap-start transition-transform duration-300 hover:translate-y-[-5px] md:w-full md:max-w-none md:flex-shrink bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer flex flex-col">
+        <a href="#" class="w-[85%] max-w-[300px] flex-shrink-0 snap-start transition-transform duration-300 hover:translate-y-[-5px] md:w-full md:max-w-none md:flex-shrink bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer flex flex-col">
             <img src="imagens/HOTELLISBOA/HOTELLISBOA.png" class="w-full h-40 sm:h-48 md:h-56 object-cover">
             <div class="p-3 sm:p-4 bg-[#f5f5f2] flex flex-col flex-1 justify-between">
             <div class="flex-shrink-0">
@@ -300,7 +284,7 @@ require 'dbconnection.php';
             </div>
             </div>
         </a>
-        <a href="alojamento.php" class="w-[85%] max-w-[300px] flex-shrink-0 snap-start transition-transform duration-300 hover:translate-y-[-5px] md:w-full md:max-w-none md:flex-shrink bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer flex flex-col">
+        <a href="#" class="w-[85%] max-w-[300px] flex-shrink-0 snap-start transition-transform duration-300 hover:translate-y-[-5px] md:w-full md:max-w-none md:flex-shrink bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer flex flex-col">
             <img src="imagens/HOTELLISBOA/HOTELLISBOA.png" class="w-full h-40 sm:h-48 md:h-56 object-cover">
             <div class="p-3 sm:p-4 bg-[#f5f5f2] flex flex-col flex-1 justify-between">
             <div class="flex-shrink-0">
@@ -323,7 +307,7 @@ require 'dbconnection.php';
             </div>
             </div>
         </a>
-        <a href="alojamento.php" class="w-[85%] max-w-[300px] flex-shrink-0 snap-start transition-transform duration-300 hover:translate-y-[-5px] md:w-full md:max-w-none md:flex-shrink bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer flex flex-col">
+        <a href="#" class="w-[85%] max-w-[300px] flex-shrink-0 snap-start transition-transform duration-300 hover:translate-y-[-5px] md:w-full md:max-w-none md:flex-shrink bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer flex flex-col">
             <img src="imagens/HOTELLISBOA/HOTELLISBOA.png" class="w-full h-40 sm:h-48 md:h-56 object-cover">
             <div class="p-3 sm:p-4 bg-[#f5f5f2] flex flex-col flex-1 justify-between">
             <div class="flex-shrink-0">
@@ -422,32 +406,6 @@ require 'dbconnection.php';
 
       </div>
     </div>
-
-  <div id="desconto-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50">
-    <div class="bg-white rounded-2xl shadow-xl w-full max-w-md text-center p-6 sm:p-8 relative transform transition-all scale-95" id="modal-content">
-      
-      <button id="fechar-modal-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition-colors">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
-
-      <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto">
-        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
-        </svg>
-      </div>
-
-      <h2 class="text-3xl font-bold text-gray-800 mt-5">Parabéns, <?php echo htmlspecialchars($_SESSION['utilizador']); ?>!</h2>
-      <p class="text-lg text-gray-600 mt-2">
-        Ganhaste um desconto de 10% na tua próxima reserva.
-      </p>
-      <p class="text-sm text-gray-500 mt-4">
-        O desconto será aplicado automaticamente no checkout.
-      </p>
-
-    </div>
-  </div>
   </section> 
   
   <footer class="mt-4 sm:mt-6 lg:mt-8 py-2 sm:py-4 lg:py-6 text-center text-gray-700 bg-[#e5e5dd]">
@@ -457,40 +415,6 @@ require 'dbconnection.php';
   </footer>
 
   <script src="js/global.js" defer></script>
-    
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          const modal = document.getElementById('desconto-modal');
-          const fecharModalBtn = document.getElementById('fechar-modal-btn');
-          
-          function fecharModal() {
-            if (modal) {
-              modal.classList.add('hidden');
-              sessionStorage.setItem('viuModalDesconto', 'true'); 
-            }
-          }
-
-          if (modal && fecharModalBtn) {
-            fecharModalBtn.addEventListener('click', fecharModal);
-            modal.addEventListener('click', function(event) {
-              if (event.target === modal) {
-                fecharModal();
-              }
-            });
-          }
-          
-          // --- LÓGICA DO MODAL (PHP) ---
-          <?php
-          if (isset($mostrar_modal_desconto) && $mostrar_modal_desconto === true) {
-              echo "
-              if (modal && !sessionStorage.getItem('viuModalDesconto')) {
-                  modal.classList.remove('hidden');
-              }
-              ";
-          }
-          ?>
-      });
-    </script>
-
+  
 </body>
 </html>

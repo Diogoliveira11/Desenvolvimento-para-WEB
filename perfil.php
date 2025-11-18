@@ -2,13 +2,11 @@
 session_start();
 require 'dbconnection.php';
 
-// 1. SEGURANÇA: Verifica se o utilizador está logado
 if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
-    header("Location: login.php"); // Redireciona se não estiver
+    header("Location: login.php"); 
     exit();
 }
 
-// 2. BUSCAR DADOS: Vai à BD buscar os dados do utilizador logado
 $idUtilizador = $_SESSION['iduser'];
 $nomeUtilizador = "";
 $emailUtilizador = "";
@@ -116,7 +114,7 @@ if ($result && mysqli_num_rows($result) == 1) {
           <span class="text-sm font-bold text-[#565656]"><?php echo htmlspecialchars($_SESSION['utilizador']); ?></span>
         </a>
         
-        <a href="suporte.html" class="flex items-center px-4 py-2 text-sm text-[#565656] hover:bg-[#e5e5dd] font-medium transition-colors duration-200">
+        <a href="suporte.php" class="flex items-center px-4 py-2 text-sm text-[#565656] hover:bg-[#e5e5dd] font-medium transition-colors duration-200">
           <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
@@ -137,18 +135,6 @@ if ($result && mysqli_num_rows($result) == 1) {
   <nav class="h-2 bg-[#c8c8b2]"></nav>
 
   <main class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 mt-6 mb-12">
-    
-<?php if (isset($_SESSION['DESCONTO_ATIVO']) && $_SESSION['DESCONTO_ATIVO'] === true): ?>
-    <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded-lg mb-6 flex items-center gap-3">
-      <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
-      </svg>
-      <div>
-        <strong class="font-bold">Desconto</strong>
-        <p class="text-sm">Tem um desconto de 10% disponível para a sua próxima reserva. Será aplicado automaticamente.</p>
-    </div>
-  </div>
-<?php endif; ?>
 
     <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg space-y-8">
 
@@ -196,9 +182,7 @@ if ($result && mysqli_num_rows($result) == 1) {
       </div>
 
     </div>
-    
   </main>
-
 
   <footer class="mt-4 sm:mt-6 lg:mt-8 py-2 sm:py-4 lg:py-6 text-center text-gray-700 bg-[#e5e5dd]">
     <p class="mb-1 sm:mb-2 text-xs sm:text-sm lg:text-base">Diogo Oliveira | a2023120056@alumni.iscac.pt</p>

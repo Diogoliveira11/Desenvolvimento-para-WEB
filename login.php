@@ -1,85 +1,47 @@
 <?php
-// ---- INÍCIO DO CÓDIGO PHP ----
-
-// 1. LÓGICA DE PROCESSAMENTO (TUDO AQUI NO TOPO)
 session_start(); 
 require 'dbconnection.php';
 
-// 2. Inicializar variáveis que o HTML (a "vista") vai precisar
 $erro = "";
 $mensagem_sucesso = "";
 
-// 3. Processar Lógica GET (ex: vindo do registo)
 if (isset($_GET['sucesso']) && $_GET['sucesso'] == 1) {
     $mensagem_sucesso = "Conta criada com sucesso! Pode fazer login.";
 }
 
-// 4. Processar Lógica GET (ex: vindo de erro de login antigo)
 if (isset($_GET['erro']) && $_GET['erro'] == 1) {
     $erro = "Utilizador e/ou password incorretos!";
 }
 
-// 5. Processar Lógica POST (tentativa de login)
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $utilizador = trim($_POST['utilizador']);
     $pass = $_POST['pass'];
 
-    $stmt = mysqli_prepare($link, "SELECT * FROM utilizadores WHERE utilizador = ?");
+    $stmt = mysqli_prepare($link, "SELECT iduser, utilizador, pass FROM utilizadores WHERE utilizador = ?");
     mysqli_stmt_bind_param($stmt, "s", $utilizador);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     
     if ($result && mysqli_num_rows($result) == 1) {
         $user = mysqli_fetch_assoc($result);
-        
+
         if (password_verify($pass, $user['pass'])) {
             
-            // TUDO CORRETO, DEFINIR SESSÃO:
             $_SESSION['iduser'] = $user['iduser'];
             $_SESSION['utilizador'] = $user['utilizador'];
             $_SESSION['logado'] = true;
-            
-            // ⭐ LÓGICA DE DESCONTO (APENAS SESSÃO) ⭐
-            
-            // 1. Verifica se é o primeiro login de sempre (flag do signin.php)
-            if (isset($_SESSION['NOVO_REGISTO']) && $_SESSION['NOVO_REGISTO'] === true) {
-                
-                // 2. ATIVA O DESCONTO (para o banner do perfil)
-                $_SESSION['DESCONTO_ATIVO'] = true;
-                
-                // 3. ATIVA O MODAL (para o paginainicial.php)
-                $_SESSION['DESCONTO_PENDENTE'] = true;
-                
-                // 4. Limpa a flag de 1ª vez (para não voltar a dar)
-                unset($_SESSION['NOVO_REGISTO']);
 
-            } else {
-                // Se não é o 1º login, garante que o modal de boas-vindas não aparece
-                unset($_SESSION['DESCONTO_PENDENTE']);
-                
-                // Nota: O DESCONTO_ATIVO vai ser limpo no logout,
-                // por isso não precisamos de o limpar aqui.
-            }
-            
-            // Se o login for bem-sucedido, REDIRECIONA e PARA.
             header("Location: paginainicial.php");
             exit(); 
 
         } else {
-            // Se o login falhar, define a variável de erro para o HTML
             $erro = "Utilizador e/ou password incorretos!";
         }
     } else {
-        // Se o login falhar, define a variável de erro para o HTML
         $erro = "Utilizador e/ou password incorretos!";
     }
 }
-
-// 6. SE O SCRIPT CHEGAR AQUI, é porque não houve redirect (é um GET ou um POST falhado)
-// O HTML (VISTA) será desenhado abaixo.
-
-// ---- FIM DO CÓDIGO PHP ----
 ?>
 <!DOCTYPE html>
 <html lang="pt-pt">

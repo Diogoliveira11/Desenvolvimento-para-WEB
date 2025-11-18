@@ -84,4 +84,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // --- 7. LÓGICA DAS PERGUNTAS FREQUENTES (FAQ) ---
+    window.toggleSubquestions = function(id) {
+        const subquestions = document.getElementById(id);
+        
+        if (subquestions) {
+            subquestions.classList.toggle('hidden');
+        }
+    };
+
+    
 });

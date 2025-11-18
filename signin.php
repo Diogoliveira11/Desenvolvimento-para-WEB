@@ -23,7 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_stmt_bind_param($stmt, "sss", $utilizador, $email, $pass_hash);
 
         if (mysqli_stmt_execute($stmt)) {
-            $_SESSION['NOVO_REGISTO'] = true; 
             header("Location: login.php?sucesso=1");
             exit(); 
         } else {
