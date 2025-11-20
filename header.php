@@ -5,29 +5,44 @@ $logado = isset($_SESSION['logado']) && $_SESSION['logado'] === true;
 // 2. Prepara o nome do utilizador se estiver logado
 $nomeUtilizador = $logado ? htmlspecialchars($_SESSION['utilizador']) : '';
 
+// 3. Aceita variáveis para o Título e Subtítulo
+$headerTitle = isset($pageTitle) ? $pageTitle : 'ESPAÇO LUSITANO';
+$headerSubtitle = isset($pageSubtitle) ? $pageSubtitle : 'Encontre promoções em hóteis, apartamentos e muito mais...'; 
+
+// 4. Deteta as páginas onde o botão VOLTAR é NECESSÁRIO
+$currentPage = basename($_SERVER['PHP_SELF']);
+$showVoltar = ($currentPage == 'alojamento.php' || $currentPage == 'ofertasdomes.php' || $currentPage == 'suporte.php'); 
+
+// 5. Determina onde o SUPORTE deve aparecer (em todo o lado exceto na sua própria página)
+$showSuporte = ($currentPage != 'suporte.php');
+
+// 6. Determina o link do logo para a página inicial correta (logado vs. não-logado)
+$homeLink = $logado ? 'paginainicial.php' : 'index.php';
 ?>
  
  <header class="w-full py-3 relative bg-[#e5e5dd] header-compact">
     <div class="flex items-center justify-between px-2 sm:px-3 lg:px-5 xl:px-6">
       
       <div class="flex items-center space-x-2 sm:space-x-3 lg:space-x-4 flex-shrink-0 logo-title">
-        <a href="paginainicial.php"> <img src="imagens/LOGO MAIOR.png" alt="Logo" class="w-12 sm:w-14 md:w-16 lg:w-20 h-auto">
+        <a href="<?php echo $homeLink; ?>"> <img src="imagens/LOGO MAIOR.png" alt="Logo" class="w-12 sm:w-14 md:w-16 lg:w-20 h-auto">
         </a>
         <div class="flex flex-col">
-          <h1 class="text-3xl xl:text-4xl font-bold text-[#565656]">
-            Suporte
+          <h1 class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-4xl font-bold text-[#565656]">
+            <?php echo $headerTitle; ?>
           </h1>
           <p class="hidden sm:block text-xs md:text-base lg:text-xl text-[#707070]">
-            Esclareça todas as suas dúvidas!
+            <?php echo $headerSubtitle; ?>
           </p>
         </div>
       </div>
   
-      <div class="hidden md:flex items-center space-x-2 lg:space-x-3 xl:space-x-4 flex-shrink-0">
+    <div class="hidden md:flex items-center space-x-2 lg:space-x-3 xl:space-x-4 flex-shrink-0">
         
-        <a class="js-voltar bg-[#c8c8b2] text-[#565656] font-bold rounded-lg px-2 py-1 lg:px-3 lg:py-2 xl:px-4 text-sm lg:text-base xl:text-lg hover:bg-[#565656] hover:text-white hover:-translate-y-0.5 transition-transform duration-300 whitespace-nowrap cursor-pointer">
-            VOLTAR
-        </a>
+        <?php if ($showVoltar): ?>
+            <a onclick="history.back();" class="bg-[#c8c8b2] text-[#565656] font-bold rounded-lg px-2 py-1 lg:px-3 lg:py-2 xl:px-4 text-sm lg:text-base xl:text-lg hover:bg-[#565656] hover:text-white hover:-translate-y-0.5 transition-transform duration-300 whitespace-nowrap cursor-pointer">
+                VOLTAR
+            </a>
+        <?php endif; ?>
 
         <?php if ($logado): ?>
           <div class="relative">
@@ -63,9 +78,15 @@ $nomeUtilizador = $logado ? htmlspecialchars($_SESSION['utilizador']) : '';
           </a>
         <?php endif; ?>
 
-      </div>
-  
-      <div class="md:hidden flex items-center ml-1 flex-shrink-0">
+        <?php if ($showSuporte): ?>
+          <a href="suporte.php" 
+            class="flex items-center justify-center w-7 h-7 lg:w-8 lg:h-8 xl:w-10 xl:h-10 cursor-pointer hover:-translate-y-0.5 transition-transform duration-300">
+            <img src="imagens/SUPORTE.png" class="w-full h-full object-contain" alt="Suporte">
+          </a>
+        <?php endif; ?>
+
+    </div>
+    <div class="md:hidden flex items-center ml-1 flex-shrink-0">
         <button id="menu-btn" class="text-[#565656] focus:outline-none">
           <svg class="w-7 h-7 sm:w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -74,8 +95,9 @@ $nomeUtilizador = $logado ? htmlspecialchars($_SESSION['utilizador']) : '';
       </div>
     </div>
   
-    <div id="mobile-menu" class="hidden md:hidden absolute top-16 right-4 sm:right-6 lg:right-8 w-44 sm:w-48 bg-white rounded-lg shadow-xl border border-gray-200 z-50">
-      <div class="py-2">
+
+<div id="mobile-menu" class="hidden md:hidden absolute top-16 right-4 sm:right-6 lg:right-8 w-44 sm:w-48 bg-white rounded-lg shadow-xl border border-gray-200 z-50">
+    <div class="py-2">
         
         <?php if ($logado): ?>
           <a href="perfil.php" class="flex items-center px-4 py-2 text-sm text-[#565656] hover:bg-[#e5e5dd] font-medium transition-colors duration-200">
@@ -93,12 +115,27 @@ $nomeUtilizador = $logado ? htmlspecialchars($_SESSION['utilizador']) : '';
           </a>
         <?php endif; ?>
 
-        <a class="js-voltar flex items-center px-4 py-2 text-sm text-[#565656] hover:bg-[#e5e5dd] font-medium transition-colors duration-200 cursor-pointer">
-          <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
-          </svg>
-          VOLTAR
-        </a>
+        <?php if ($showVoltar || $showSuporte): ?>
+            <div class="border-t border-gray-100 my-1"></div>
+        <?php endif; ?>
+
+        <?php if ($showVoltar): ?>
+          <a onclick="history.back();" class="flex items-center px-4 py-2 text-sm text-[#565656] hover:bg-[#e5e5dd] font-medium transition-colors duration-200 cursor-pointer">
+            <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+            </svg>
+            VOLTAR
+          </a>
+        <?php endif; ?>
+        
+        <?php if ($showSuporte): ?>
+          <a href="suporte.php" class="flex items-center px-4 py-2 text-sm text-[#565656] hover:bg-[#e5e5dd] font-medium transition-colors duration-200">
+            <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            SUPORTE
+          </a>
+        <?php endif; ?>
 
         <?php if ($logado): ?>
           <div class="border-t border-gray-100 my-1"></div>
@@ -109,6 +146,6 @@ $nomeUtilizador = $logado ? htmlspecialchars($_SESSION['utilizador']) : '';
             LOGOUT
           </a>
         <?php endif; ?>
-      </div>
     </div>
-  </header>
+</div>
+</header>

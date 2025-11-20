@@ -1,8 +1,8 @@
 <?php
 
 $host = 'localhost';
-$user = 'web2'; 
-$pass = 'web2'; 
+$user = 'web2';
+$pass = 'web2';
 $dbname = 'web2';
 
 $link = mysqli_connect($host, $user, $pass, $dbname);

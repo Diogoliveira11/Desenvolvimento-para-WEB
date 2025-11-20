@@ -1,3 +1,9 @@
+<?php session_start();
+// Definimos o título e subtítulo específicos para esta página.
+$pageTitle = 'Ofertas do Mês';
+$pageSubtitle = 'Poupe em estadias para este mês de Outubro';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-pt">
 <head>
@@ -10,67 +16,13 @@
   
   </head>
 
-<body class="bg-gray-50 font-sans">
-
-  <header class="w-full py-3 relative bg-[#e5e5dd] header-compact">
-    <div class="flex items-center justify-between px-2 sm:px-3 lg:px-5 xl:px-6">
-      
-      <div class="flex items-center space-x-2 sm:space-x-3 lg:space-x-4 flex-shrink-0 logo-title">
-        <a href="index.php">
-          <img src="imagens/LOGO MAIOR.png" alt="Logo" class="w-12 sm:w-14 md:w-16 lg:w-20 h-auto">
-        </a>
-        <div class="flex flex-col">
-          <h1 class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-4xl font-bold text-[#565656]">
-            Ofertas do Mês
-          </h1>
-          <p class="hidden sm:block text-xs md:text-base lg:text-xl text-[#707070]">
-            Poupe em estadias para este mês de Outubro
-          </p>
-        </div>
-      </div>
+<body class="bg-gray-50 font-sans flex flex-col min-h-screen">
   
-      <div class="hidden md:flex items-center space-x-2 lg:space-x-3 xl:space-x-4 flex-shrink-0">
-        <a href="login.php" 
-           class="bg-[#c8c8b2] text-[#565656] font-bold rounded-lg px-2 py-1 lg:px-3 lg:py-2 xl:px-4 text-sm lg:text-base xl:text-lg
-                  hover:bg-[#565656] hover:text-white hover:-translate-y-0.5 transition-transform duration-300">
-          ENTRAR
-        </a>
-        
-        <a class="js-voltar bg-[#c8c8b2] text-[#565656] font-bold rounded-lg px-2 py-1 lg:px-3 lg:py-2 xl:px-4 text-sm lg:text-base xl:text-lg hover:bg-[#565656] hover:text-white hover:-translate-y-0.5 transition-transform duration-300 whitespace-nowrap cursor-pointer">
-           VOLTAR
-        </a>
-      </div>
-  
-      <div class="md:hidden flex items-center ml-1 flex-shrink-0">
-        <button id="menu-btn" class="text-[#565656] focus:outline-none">
-          <svg class="w-7 h-7 sm:w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-  
-    <div id="mobile-menu" class="hidden md:hidden absolute top-16 right-4 sm:right-6 lg:right-8 w-44 sm:w-48 bg-white rounded-lg shadow-xl border border-gray-200 z-50">
-      <div class="py-2">
-        <a href="login.php" class="flex items-center px-4 py-2 text-sm text-[#565656] hover:bg-[#e5e5dd] font-medium transition-colors duration-200">
-          <svg class="w-4 h-4 mr-3 stroke-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-          </svg>
-          ENTRAR
-        </a>
-        <a class="js-voltar flex items-center px-4 py-2 text-sm text-[#565656] hover:bg-[#e5e5dd] font-medium transition-colors duration-200 cursor-pointer">
-          <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-             <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
-          </svg>
-          VOLTAR
-        </a>
-      </div>
-    </div>
-  </header>
+  <?php include 'header.php'; ?>
 
   <nav class="h-2 bg-[#c8c8b2]"></nav>
 
-  <section class="w-full px-4 sm:px-6 lg:px-8 xl:px-12 mt-6">
+  <section class="w-full px-4 sm:px-6 lg:px-8 xl:px-12 mt-6 flex-grow">
     <div class="mx-auto">
       
       <div class="flex flex-row justify-between items-center mb-3 gap-2 sm:gap-3 lg:gap-4">
@@ -504,12 +456,7 @@
 
   <script src="js/global.js" defer></script>
 
-
-  <footer class="mt-4 sm:mt-6 lg:mt-8 py-2 sm:py-4 lg:py-6 text-center text-gray-700 bg-[#e5e5dd]">
-    <p class="mb-1 sm:mb-2 text-xs sm:text-sm lg:text-base">Diogo Oliveira | a2023120056@alumni.iscac.pt</p>
-    <p class="mb-1 sm:mb-2 text-xs sm:text-sm lg:text-base">Eduardo Vieira | a2023129589@alumni.iscac.pt</p>
-    <p class="mb-0 text-xs sm:text-sm lg:text-base">&copy; 2025 - ESPAÇO LUSITANO</p>
-  </footer>
+  <?php include 'footer.php'; ?>
 
 </body>
 </html>

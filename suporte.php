@@ -5,6 +5,10 @@ $logado = isset($_SESSION['logado']) && $_SESSION['logado'] === true;
 
 // 2. Prepara o nome do utilizador se estiver logado
 $nomeUtilizador = $logado ? htmlspecialchars($_SESSION['utilizador']) : '';
+
+// *** Variáveis de Título específicas para suporte.php ***
+$pageTitle = 'Suporte';
+$pageSubtitle = 'Esclareça todas as suas dúvidas!';
 ?>
 
 <!DOCTYPE html>
@@ -19,16 +23,18 @@ $nomeUtilizador = $logado ? htmlspecialchars($_SESSION['utilizador']) : '';
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="bg-gray-50 font-sans flex flex-col min-h-screen">
 <?php include 'header.php'; ?>
 
   <nav class="h-2 bg-[#c8c8b2]"></nav>
 
-  <div class="container max-w-3xl w-full mx-auto my-6 mt-10 bg-white rounded-lg px-4 sm:px-6 overflow-hidden">
+  <div class="container max-w-3xl w-full mx-auto my-6 mt-10 bg-white rounded-lg px-4 sm:px-6 overflow-hidden flex-grow">
       <div class="text-center font-bold bg-[#e5e5dd] py-4 text-2xl sm:text-3xl sm:py-6 rounded-t-lg">
         Perguntas Frequentes
       </div>
+      
       <div class="faq-container rounded-b-lg">
+        
         <div class="main-question rounded-t-lg p-4 cursor-pointer font-semibold text-[#565656] border-b border-gray-200 hover:bg-[#d5d5cd]" onclick="toggleSubquestions('registo')">
             Como posso registar-me?
         </div>
@@ -38,7 +44,6 @@ $nomeUtilizador = $logado ? htmlspecialchars($_SESSION['utilizador']) : '';
             </div>
         </div>
 
-        <div class="faq-container rounded-b-lg">
         <div class="main-question rounded-t-lg p-4 cursor-pointer font-semibold text-[#565656] border-b border-gray-200 hover:bg-[#d5d5cd]" onclick="toggleSubquestions('entrar')">
             Como entro na conta?
         </div>
@@ -47,9 +52,7 @@ $nomeUtilizador = $logado ? htmlspecialchars($_SESSION['utilizador']) : '';
                 Pode entrar na conta só depois de se ter registado, clicando no botão "ENTRAR" localizado no canto superior direito. Basta preencher o formulário com os seus dados pessoais com que se registou.
             </div>
         </div>
-        </div>
-
-        <div class="faq-container rounded-b-lg">
+        
         <div class="main-question rounded-t-lg p-4 cursor-pointer font-semibold text-[#565656] border-b border-gray-200 hover:bg-[#d5d5cd]" onclick="toggleSubquestions('fazerreserva')">
             Como faço uma reserva?
         </div>
@@ -58,9 +61,7 @@ $nomeUtilizador = $logado ? htmlspecialchars($_SESSION['utilizador']) : '';
             Após encontrar o alojamento desejado, clique nele para aceder à página de detalhes, poderá ver todas as informações, fotos e preços. Para reservar, utilize os contactos fornecidos pelo site.          </div>
             </div>
         </div>
-        </div>
 
-        <div class="faq-container rounded-b-lg">
         <div class="main-question rounded-t-lg p-4 cursor-pointer font-semibold text-[#565656] border-b border-gray-200 hover:bg-[#d5d5cd]" onclick="toggleSubquestions('histreservas')">
             Como posso consultar o histórico de reservas?
         </div>
@@ -69,9 +70,7 @@ $nomeUtilizador = $logado ? htmlspecialchars($_SESSION['utilizador']) : '';
               Para consultar o seu histórico de reservas, basta aceder à sua Área Pessoal e selecionar a opção "Histórico de Reservas". Aí encontrará uma lista completa de todas as suas reservas anteriores e actuais, com detalhes como datas, valores e estados das reservas.                         
             </div>
         </div>
-        </div>
         
-        <div class="faq-container rounded-b-lg">
         <div class="main-question rounded-t-lg p-4 cursor-pointer font-semibold text-[#565656] border-b border-gray-200 hover:bg-[#d5d5cd]" onclick="toggleSubquestions('alterarreserva')">
           Como posso cancelar ou alterar uma reserva?
         </div>
@@ -81,7 +80,6 @@ $nomeUtilizador = $logado ? htmlspecialchars($_SESSION['utilizador']) : '';
             </div>
         </div>
 
-        <div class="faq-container rounded-b-lg">
         <div class="main-question rounded-t-lg p-4 cursor-pointer font-semibold text-[#565656] border-b border-gray-200 hover:bg-[#d5d5cd]" onclick="toggleSubquestions('destino')">
           Como posso avaliar um pacote de destino?
         </div>
@@ -90,9 +88,7 @@ $nomeUtilizador = $logado ? htmlspecialchars($_SESSION['utilizador']) : '';
             Após ter desfrutado do seu alojamento de destino poderá avaliar a sua experiência, acedendo à sua Área Pessoal → Histórico de Reservas e clicar em "Avaliar" junto à reserva concluída. As avaliações ajudam outros viajantes e os anfitriões a melhorarem os seus serviços.                         
             </div>
         </div>
-        </div>
 
-        <div class="faq-container rounded-b-lg">
         <div class="main-question rounded-t-lg p-4 cursor-pointer font-semibold text-[#565656] border-b border-gray-200 hover:bg-[#d5d5cd]" onclick="toggleSubquestions('notificação')">
           Como funcionam as notificações por e-mail e no navegador?
         </div>
@@ -102,9 +98,7 @@ $nomeUtilizador = $logado ? htmlspecialchars($_SESSION['utilizador']) : '';
             Pode optar por receber alertas por e-mail sobre promoções, reservas e actualizações e notificações no navegador para lembrete de check-in, avaliações pendentes e ofertas especiais.                 
             </div>
         </div>
-        </div>
 
-        <div class="faq-container rounded-b-lg">
         <div class="main-question rounded-t-lg p-4 cursor-pointer font-semibold text-[#565656] border-b border-gray-200 hover:bg-[#d5d5cd]" onclick="toggleSubquestions('partilhar')">
           Como posso partilhar as minhas viagens nas redes sociais?
         </div>
@@ -113,9 +107,7 @@ $nomeUtilizador = $logado ? htmlspecialchars($_SESSION['utilizador']) : '';
             Após aceder à sua Área Pessoal → As Minhas Viagens. Seleccione a viagem que deseja partilhar e clique no ícone da rede social pretendida (Facebook, Instagram, Twitter, etc.). Pode partilhar tanto reservas futuras como experiências já concluídas.       
             </div>
         </div>
-        </div>
 
-        <div class="faq-container rounded-b-lg">
         <div class="main-question rounded-t-lg p-4 cursor-pointer font-semibold text-[#565656] border-b border-gray-200 hover:bg-[#d5d5cd]" onclick="toggleSubquestions('desconto')">
           Há descontos para a primeira compra?   
         </div>
@@ -124,9 +116,7 @@ $nomeUtilizador = $logado ? htmlspecialchars($_SESSION['utilizador']) : '';
             Sim! Ao criar uma conta e efectuar a sua primeira reserva, recebe automaticamente 10% de desconto.                         
             </div>
         </div>
-        </div>
 
-        <div class="faq-container rounded-b-lg">
         <div class="main-question rounded-t-lg p-4 cursor-pointer font-semibold text-[#565656] border-b border-gray-200 hover:bg-[#d5d5cd]" onclick="toggleSubquestions('problemas')">
           O que devo fazer se tiver problemas técnicos?
         </div>
@@ -135,18 +125,13 @@ $nomeUtilizador = $logado ? htmlspecialchars($_SESSION['utilizador']) : '';
             Caso encontre dificuldades, consulte o menu de suporte na barra de navegação. Se o problema persistir, contacte o nosso suporte através do e-mail: suporte@espacolusitano.pt. 
             </div>
         </div>
-        </div>
-
+        
       </div>
     </div>
 
 <script src="js/global.js" defer></script>
 
-  <footer class="mt-4 sm:mt-6 lg:mt-8 py-2 sm:py-4 lg:py-6 text-center text-gray-700 bg-[#e5e5dd]">
-    <p class="mb-1 sm:mb-2 text-xs sm:text-sm lg:text-base">Diogo Oliveira | a2023120056@alumni.iscac.pt</p>
-    <p class="mb-1 sm:mb-2 text-xs sm:text-sm lg:text-base">Eduardo Vieira | a2023129589@alumni.iscac.pt</p>
-    <p class="mb-0 text-xs sm:text-sm lg:text-base">&copy; 2025 - ESPAÇO LUSITANO</p>
-  </footer>
+<?php include 'footer.php'; ?>
 
 </body>
 </html>
