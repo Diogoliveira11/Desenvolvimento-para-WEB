@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $pass = $_POST['pass'];
 
-    $stmt = mysqli_prepare($link, "SELECT iduser FROM utilizadores WHERE utilizador = ? OR email = ?");
+    $stmt = mysqli_prepare($link, "SELECT id_user FROM utilizadores WHERE utilizador = ? OR email = ?");
     mysqli_stmt_bind_param($stmt, "ss", $utilizador, $email);
     mysqli_stmt_execute($stmt);
     $check_result = mysqli_stmt_get_result($stmt);

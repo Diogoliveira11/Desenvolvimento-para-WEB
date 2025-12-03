@@ -1,31 +1,26 @@
 <?php
 session_start();
-require 'dbconnection.php'; // Inclui a conexão à base de dados
+require 'dbconnection.php'; 
 
-// =========================================================================
-// 1. SEGURANÇA: Verifica se o utilizador está logado
-// =========================================================================
 if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
     header("Location: login.php");
     exit();
 }
 
-$idUtilizador = $_SESSION['iduser'];
+$idUtilizador = $_SESSION['id_user'];
 $nomeUtilizador = $_SESSION['utilizador'];
 $erro = "";
 $pageTitle = 'Apagar Conta';
 $pageSubtitle = 'Confirmação de Segurança.';
 
 
-// =========================================================================
 // 2. PROCESSAMENTO DO FORMULÁRIO
-// =========================================================================
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $password = $_POST['password_confirmacao'];
 
     // 2.1. Busca o hash da password atual na base de dados
-    $stmt = mysqli_prepare($link, "SELECT pass FROM utilizadores WHERE iduser = ?");
+    $stmt = mysqli_prepare($link, "SELECT pass FROM utilizadores WHERE id_user = ?");
     mysqli_stmt_bind_param($stmt, "i", $idUtilizador);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
@@ -38,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $hashArmazenado)) {
             
             // 2.3. EXECUTA A ELIMINAÇÃO DA CONTA
-            $stmt_delete = mysqli_prepare($link, "DELETE FROM utilizadores WHERE iduser = ?");
+            $stmt_delete = mysqli_prepare($link, "DELETE FROM utilizadores WHERE id_user = ?");
             mysqli_stmt_bind_param($stmt_delete, "i", $idUtilizador);
 
             if (mysqli_stmt_execute($stmt_delete)) {
@@ -70,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?php echo $pageTitle; ?> - ESPAÇO LUSITANO</title>
+  <title>APAGAR CONTA - ESPAÇO LUSITANO</title>
   <link rel="icon" type="image/png" href="imagens/FAVICON.ico">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -80,12 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="w-full max-w-md bg-white rounded-3xl shadow-xl overflow-hidden">
         
         <div class="bg-gradient-to-r from-red-600 to-red-700 p-8 text-center text-white relative">
-            
-            <a href="perfil.php" class="absolute top-4 right-4 w-10 h-10 bg-red-800 rounded-full flex items-center justify-center hover:bg-red-900 transition duration-300 shadow-lg text-white">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                </svg>
-            </a>
             
             <div class="mt-1">
                 <h2 class="text-3xl font-bold">Apagar Conta</h2>
@@ -97,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             <div class="mb-6 pb-3 border-b border-gray-200">
                 <p class="text-lg font-bold text-red-600">Atenção! Esta ação é irreversível.</p>
-                <p class="text-sm font-medium text-gray-500 mt-2">Confirme a sua password para eliminar permanentemente a conta **<?php echo htmlspecialchars($nomeUtilizador); ?>**.</p>
+                <p class="text-sm font-medium text-gray-500 mt-2">Confirme a sua password para eliminar permanentemente a conta <?php echo htmlspecialchars($nomeUtilizador); ?>.</p>
             </div>
 
             <?php if (!empty($erro)): ?>

@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $utilizador = trim($_POST['utilizador']);
     $pass = $_POST['pass'];
 
-    $stmt = mysqli_prepare($link, "SELECT iduser, utilizador, pass FROM utilizadores WHERE utilizador = ?");
+    $stmt = mysqli_prepare($link, "SELECT id_user, utilizador, email, pass FROM utilizadores WHERE utilizador = ?");
     mysqli_stmt_bind_param($stmt, "s", $utilizador);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
@@ -28,11 +28,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (password_verify($pass, $user['pass'])) {
             
-            $_SESSION['iduser'] = $user['iduser'];
+            $_SESSION['id_user'] = $user['id_user'];
             $_SESSION['utilizador'] = $user['utilizador'];
+            $_SESSION['email'] = $user['email'];
             $_SESSION['logado'] = true;
 
-            header("Location: paginainicial.php");
+            header("Location: index.php");
             exit(); 
 
         } else {
@@ -48,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESPAÇO LUSITANO - ENTRAR</title>
+    <title>ENTRAR - ESPAÇO LUSITANO</title>
     <link rel="icon" type="image/png" href="imagens/FAVICON.ico">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>

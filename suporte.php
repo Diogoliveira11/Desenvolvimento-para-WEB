@@ -1,12 +1,9 @@
 <?php session_start();
 
-// 1. Verifica o estado de login
 $logado = isset($_SESSION['logado']) && $_SESSION['logado'] === true;
 
-// 2. Prepara o nome do utilizador se estiver logado
 $nomeUtilizador = $logado ? htmlspecialchars($_SESSION['utilizador']) : '';
 
-// *** Variáveis de Título específicas para suporte.php ***
 $pageTitle = 'Suporte';
 $pageSubtitle = 'Esclareça todas as suas dúvidas!';
 ?>
@@ -24,11 +21,11 @@ $pageSubtitle = 'Esclareça todas as suas dúvidas!';
 </head>
 
 <body class="bg-gray-50 font-sans flex flex-col min-h-screen">
-<?php include 'header.php'; ?>
+<?php include 'includes/header.php'; ?>
 
   <nav class="h-2 bg-[#c8c8b2]"></nav>
 
-  <div class="container max-w-3xl w-full mx-auto my-6 mt-10 bg-white rounded-lg px-4 sm:px-6 overflow-hidden flex-grow">
+  <div class="container max-w-3xl w-full mx-auto mb-12 mt-10 rounded-lg px-4 sm:px-6">
       <div class="text-center font-bold bg-[#e5e5dd] py-4 text-2xl sm:text-3xl sm:py-6 rounded-t-lg">
         Perguntas Frequentes
       </div>
@@ -131,7 +128,7 @@ $pageSubtitle = 'Esclareça todas as suas dúvidas!';
 
 <script src="js/global.js" defer></script>
 
-<?php include 'footer.php'; ?>
+<?php include 'includes/footer.php'; ?>
 
 </body>
 </html>

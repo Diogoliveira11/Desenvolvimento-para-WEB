@@ -2,28 +2,22 @@
 session_start();
 require 'dbconnection.php'; 
 
-// =========================================================================
-// 1. SEGURANÇA: Verifica se o utilizador está logado
-// =========================================================================
 if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
     header("Location: login.php");
     exit();
 }
 
-$idUtilizador = $_SESSION['iduser'];
+$idUtilizador = $_SESSION['id_user'];
 // NOVO: Obtém o nome de utilizador da sessão
 $nomeUtilizador = $_SESSION['utilizador']; 
 $erro = "";
 $mensagem_sucesso = "";
 
-// Variáveis para o header.php
 $pageTitle = 'Alterar Password';
 $pageSubtitle = 'Mantenha a sua conta segura.';
 
 
-// =========================================================================
 // 2. PROCESSAMENTO DO FORMULÁRIO
-// =========================================================================
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $passwordAtual = $_POST['password_atual'];
@@ -40,8 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     else {
         
-        // 2.3. Busca o hash da password atual na base de dados
-        $stmt = mysqli_prepare($link, "SELECT pass FROM utilizadores WHERE iduser = ?");
+        // 2.3. Procura o hash da password atual na base de dados
+        $stmt = mysqli_prepare($link, "SELECT pass FROM utilizadores WHERE id_user = ?");
         mysqli_stmt_bind_param($stmt, "i", $idUtilizador);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
@@ -56,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // 2.5. Gera novo hash e atualiza a BD
                 $novaPasswordHash = password_hash($novaPassword, PASSWORD_DEFAULT);
                 
-                $stmt_update = mysqli_prepare($link, "UPDATE utilizadores SET pass = ? WHERE iduser = ?");
+                $stmt_update = mysqli_prepare($link, "UPDATE utilizadores SET pass = ? WHERE id_user = ?");
                 mysqli_stmt_bind_param($stmt_update, "si", $novaPasswordHash, $idUtilizador);
 
                 if (mysqli_stmt_execute($stmt_update)) {
@@ -84,13 +78,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alterar Password - ESPAÇO LUSITANO</title>
+  <title>ALTERAR PASSWORD - ESPAÇO LUSITANO</title>
   <link rel="icon" type="image/png" href="imagens/FAVICON.ico">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-gray-50 font-sans flex flex-col min-h-screen">
-  <?php include 'header.php'; ?>
+  <?php include 'includes/header.php'; ?>
   <nav class="h-2 bg-[#c8c8b2]"></nav>
 
   <main class="flex-grow w-full flex items-center justify-center p-4"> 
@@ -159,7 +153,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </main>
 
   <script src="js/global.js" defer></script>
-  <?php include 'footer.php'; ?>
+  <?php include 'includes/footer.php'; ?>
 
 </body>
 </html>
