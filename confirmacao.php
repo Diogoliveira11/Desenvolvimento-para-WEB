@@ -62,7 +62,7 @@ $preco_total_formatado = number_format($reserva['preco_total'], 2, ',', '.');
 $id_alojamento_fk = $reserva['id_alojamento']; 
 
 // Lógica de Negócio
-$check_out_dt_full = new DateTime($reserva['data_check_out'] . ' 12:00:00'); // Assume o check-out é ao meio-dia
+$check_out_dt_full = new DateTime($reserva['data_check_out'] . ' 12:00:00');
 $hoje = new DateTime();
 $pode_avaliar = $check_out_dt_full < $hoje; 
 ?>

@@ -1,12 +1,11 @@
     <?php
-
     session_start();
     require '../dbconnection.php'; 
 
     $homeLink = "admin.php"; 
     $adminLink = "admin.php"; 
 
-    // 1. Consulta para obter todas as reservas Pendentes
+    //1 Consulta para obter todas as reservas Pendentes
     $query_pendentes = "
         SELECT 
             R.*, A.nome AS nome_alojamento, 
@@ -41,9 +40,9 @@
             .text-brand-dark { color: #565656; }
             .bg-brand-light { background-color: #e5e5dd; }
             .border-brand-nav { border-color: #c8c8b2; }
-            .hover-brand-dark:hover { background-color: #3a3a3a; }
             
             body { 
+
                 display: flex; 
                 flex-direction: column; 
                 min-height: 100vh;
@@ -81,7 +80,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
                 
-                Reservas pendentes de confirmação (<span id="total-reservas-count"><?php echo count($reservas); ?></span>)
+                Reservas pendentes de confirmação (<?php echo count($reservas); ?>)
             </h2>
         </div>
 
@@ -167,7 +166,7 @@
     </footer>
 
     <script>
-        // Função para exibir o popup de sucesso
+        // Função para exibir o popup de sucesso (Estilo ajustado no HTML/CSS)
         function showSuccessPopup(message) {
             const popup = document.getElementById('sucesso-popup');
             const span = popup.querySelector('span');
@@ -190,11 +189,13 @@
         }  
 
         function updateListAfterAction(idReserva) {
+            // Remove a linha da interface
             const row = document.getElementById(`reserva-${idReserva}`);
             if (row) row.remove();
             
             // Verifica se a lista ficou vazia
             const lista = document.getElementById('reservas-lista');
+            // Conta todos os elementos div (as reservas)
             const currentReservas = lista.querySelectorAll('div[id^="reserva-"]');
 
             if(currentReservas.length === 0) { 
@@ -282,7 +283,6 @@
                 }
             });
         }
-
     </script>
     </body>
     </html>

@@ -1,11 +1,10 @@
 <?php
 
 session_start();
-require '..\dbconnection.php'; 
+require '../dbconnection.php'; 
 
 header('Content-Type: application/json');
 
-// VERIFICAÇÃO DE ADMIN
 if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
     http_response_code(403);
     echo json_encode(['success' => false, 'message' => 'Acesso negado. Por favor, faça login.']);
@@ -21,7 +20,6 @@ if (empty($id_reserva) || !is_numeric($id_reserva)) {
     exit;
 }
 
-// INÍCIO DA TRANSAÇÃO
 mysqli_begin_transaction($link);
 
 try {
@@ -64,7 +62,7 @@ try {
     mysqli_stmt_execute($stmt_update_reserva);
     mysqli_stmt_close($stmt_update_reserva);
 
-    // 4. REPOR A DISPONIBILIDADE (O objetivo principal: disponibilidade = disponibilidade + N)
+    // 4. REPOR A DISPONIBILIDADE
     $query_repor_disp = "
         UPDATE alojamento
         SET disponibilidade = disponibilidade + ?

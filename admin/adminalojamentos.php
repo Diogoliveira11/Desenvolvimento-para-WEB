@@ -23,7 +23,7 @@ $success_message = null;
 $homeLink = "admin.php"; 
 
 
-// 1. LÓGICA DE PROCESSAMENTO (POST)
+// 1. LÓGICA DE PROCESSAMENTO
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $acao = $_POST['acao'] ?? '';
 
@@ -281,7 +281,7 @@ function get_imagem_principal($link, $alojamento_id) {
 }
 
 
-// 3. BUSCAR DADOS (Refrescados após qualquer POST)
+// 3. BUSCAR DADOS
 if (isset($link) && $link) { 
     $query = "SELECT * FROM $tabela_alojamentos ORDER BY $coluna_id DESC";
     $result = mysqli_query($link, $query);
@@ -701,7 +701,7 @@ if (isset($link) && $link) {
 
 <script>
     // VARIÁVEIS GLOBAIS E POPUP
-    // Função para mostrar popup (usada apenas para Inserção, o Toggle e Edição usam o PHP após POST)
+    // Função para mostrar popup
     function showSuccessPopup(message) {
         const popup = document.getElementById('sucesso-popup');
         const span = popup.querySelector('span');

@@ -59,14 +59,14 @@ try {
     $dt_reserva = new DateTime(); 
     $data_reserva_mysql = mysqli_real_escape_string($link, $dt_reserva->format('Y-m-d H:i:s')); 
     
-    // 3. VALIDAÇÃO RIGOROSA: data_check_out não pode ser vazio!
+    // 2. VALIDAÇÃO RIGOROSA: data_check_out não pode ser vazio!
     if (empty($data_check_in) || empty($data_check_out) || empty($nome_cliente) || $preco_total_float <= 0) {
         throw new Exception("Dados de data (Check-in/Check-out) ou cliente em falta.", 400);
     }
 
     mysqli_begin_transaction($link);
 
-    // 4. Redução de Disponibilidade
+    // 3. Redução de Disponibilidade
     $query_update_disp = "UPDATE alojamento SET disponibilidade = disponibilidade - ? WHERE id_alojamento = ? AND disponibilidade >= ?;";
     $stmt_update = mysqli_prepare($link, $query_update_disp);
     mysqli_stmt_bind_param($stmt_update, "iii", $num_quartos_reservados, $id_alojamento, $num_quartos_reservados);
@@ -78,7 +78,7 @@ try {
     }
     mysqli_stmt_close($stmt_update); 
 
-    // 5. INSERÇÃO CRÍTICA: SQL DIRETO 
+    // 4. INSERÇÃO CRÍTICA: SQL DIRETO 
     $estado_reserva = 'Pendente'; 
 
     $query_insert_reserva = "
@@ -103,7 +103,7 @@ try {
 
     mysqli_commit($link);
 
-    // 6. Sucesso - Retorno JSON
+    // 5. Sucesso - Retorno JSON
     echo json_encode([
         'success' => true, 
         'id_reserva' => $id_reserva,

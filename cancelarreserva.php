@@ -1,11 +1,10 @@
 <?php
-
 session_start();
 require 'dbconnection.php'; 
 
 header('Content-Type: application/json');
 
-// Recebe o ID da reserva a ser cancelada (deve ser enviado via POST ou GET)
+// Recebe o ID da reserva a ser cancelada
 $id_reserva = $_POST['id_reserva'] ?? $_GET['id_reserva'] ?? null; 
 
 if (empty($id_reserva) || !is_numeric($id_reserva)) {

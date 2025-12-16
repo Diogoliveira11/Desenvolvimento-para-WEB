@@ -15,7 +15,7 @@ $alojamento_id = $_GET['id'] ?? null;
 $check_in_str = $_GET['data_check_in'] ?? null;
 $check_out_str = $_GET['data_check_out'] ?? null;
 
-// --- VALIDAÇÃO RIGOROSA DE PARÂMETROS GET
+// VALIDAÇÃO RIGOROSA DE PARÂMETROS GET
 if (empty($alojamento_id) || empty($check_in_str) || empty($check_out_str)) {
     $erro_falta = [];
     if (empty($alojamento_id)) $erro_falta[] = "ID do Alojamento";

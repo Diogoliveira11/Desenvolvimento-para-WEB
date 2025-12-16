@@ -5,7 +5,6 @@ ini_set('display_errors', 1);
 require 'dbconnection.php'; 
 
 // 1. Encontrar reservas que terminaram e ainda não foram processadas
-
 $query_finalizar = "
     SELECT 
         r.id_reserva, r.id_alojamento, r.num_quartos

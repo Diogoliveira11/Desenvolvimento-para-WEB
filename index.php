@@ -68,7 +68,6 @@ $pageSubtitle = 'Encontre promoções em hóteis, apartamentos e muito mais...';
 
 
 // 2. BUSCA DOS DADOS PARA AS SECÇÕES
-
 // 2.1. Busca as Ofertas do Mês
 $ofertas = getAlojamentos($link, 4, 'max_desconto');
 
@@ -169,7 +168,7 @@ $melhorAvaliados = getAlojamentos($link, 4, 'avaliacao_media', 9.0);
                 
                     <?php foreach ($melhorAvaliados as $alojamento): ?>
                         <?php 
-                            // PREÇO FINAL (Será o preço com desconto, ou o preço base, se NULL)
+                            // PREÇO FINAL
                             $preco_final = $alojamento['preco_final'] ?? $alojamento['preco_base'];
                             $avaliacao_raw = $alojamento['avaliacao_media'];
                             $avaliacao = $avaliacao_raw !== null && $avaliacao_raw > 0 

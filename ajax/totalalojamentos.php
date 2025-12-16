@@ -1,5 +1,5 @@
 <?php
-require '../dbconnection.php'; // Certifique-se que o caminho está correto
+require '../dbconnection.php'; 
 
 $sql = "SELECT COUNT(id_alojamento) AS total FROM alojamento";
 $result = mysqli_query($link, $sql);

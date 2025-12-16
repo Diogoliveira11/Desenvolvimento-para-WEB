@@ -35,7 +35,6 @@ function getAlojamentosPorRegiao($link, $regiao) {
 }
 
 // 1. LÓGICA DE TRATAMENTO DA REGIÃO E MAPAS DE PREPOSIÇÕES
-
 // 1.1 Receber o nome da região da URL. Usamos a versão limpa (escaped) para a DB e a original para o mapeamento.
 $regiao_selecionada = isset($_GET['regiao']) ? mysqli_real_escape_string($link, $_GET['regiao']) : 'Portugal';
 $regiao_para_mapa = isset($_GET['regiao']) ? $_GET['regiao'] : 'Portugal'; // Não escapada para corresponder às chaves do array

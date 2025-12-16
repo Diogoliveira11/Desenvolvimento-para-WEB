@@ -38,7 +38,7 @@ $query = "INSERT INTO reservas (
             id_alojamento, id_utilizador, data_check_in, data_check_out, num_hospedes, 
             preco_total, nome_cliente, apelido_cliente, morada_reserva, cidade_reserva, 
             codigo_postal_reserva, pais_reserva, data_reserva, estado
-          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), 'Confirmada')";
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), 'Pendente')";
 
 $stmt = mysqli_prepare($link, $query);
 
@@ -65,7 +65,6 @@ if (mysqli_stmt_execute($stmt)) {
     // Sucesso: Retorna o ID da reserva para o JavaScript
     echo json_encode(['success' => true, 'id_reserva' => $id_reserva]);
 } else {
-    // ERRO CRÍTICO: Devolve uma mensagem de erro JSON com detalhe do MySQL
     http_response_code(500); 
     echo json_encode(['error' => 'Erro ao inserir na BD. Detalhe: ' . mysqli_error($link)]);
 }

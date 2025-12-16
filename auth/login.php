@@ -18,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $utilizador = trim($_POST['utilizador']);
     $pass = $_POST['pass'];
 
-    // ADICIONADO: Selecionamos também a coluna 'estado'
     $stmt = mysqli_prepare($link, "SELECT id_user, utilizador, email, pass, estado FROM utilizadores WHERE utilizador = ?");
     mysqli_stmt_bind_param($stmt, "s", $utilizador);
     mysqli_stmt_execute($stmt);
@@ -29,7 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (password_verify($pass, $user['pass'])) {
             
-            // --- NOVA VERIFICAÇÃO DE BLOQUEIO ---
             if ($user['estado'] == 0) {
                 $erro = "A sua conta está bloqueada / desativada!";
             } else {

@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
     }
 }
 
-// 4. PROCESSAMENTO DE ALTERAÇÃO DE PASSWORD
+// 3. PROCESSAMENTO DE ALTERAÇÃO DE PASSWORD
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['action'] == 'alterar_password') {
         $passwordAtual = $_POST['password_atual'];
         $novaPassword = $_POST['nova_password'];
@@ -204,7 +204,7 @@ $pageSubtitle = 'Consulte todas as suas informações!';
                             
                             $checkout_final_dt = new DateTime($reserva['data_check_out'] . ' ' . $hora_check_out_str);
 
-                            // Lógica de Cancelamento: Tem que estar Confirmada E a data de cancelamento (Check-in - 2 dias) tem que ser FUTURA
+                            // Lógica de Cancelamento
                             $data_limite_cancelamento = (clone $check_in_dt)->modify('-2 days');
 
                             $pode_cancelar = $reserva['estado'] == 'Confirmada' && $data_limite_cancelamento > $hoje_agora;

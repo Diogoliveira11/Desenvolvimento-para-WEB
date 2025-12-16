@@ -96,7 +96,6 @@ if (!$is_modal) :
 <?php endif; ?>
 <?php endif; ?>
 
-
 <?php if (!$erro_fatal) :  ?>
 
 <div class="space-y-4">
@@ -139,7 +138,6 @@ if (!$is_modal) :
 </div>
 
 <?php endif;  ?>
-
 
 <?php if (!$is_modal) :  ?>
 
