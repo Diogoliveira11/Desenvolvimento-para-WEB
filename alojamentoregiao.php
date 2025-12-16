@@ -18,7 +18,7 @@ function getAlojamentosPorRegiao($link, $regiao) {
         LEFT JOIN
             avaliacoes AS T ON A.id_alojamento = T.id_alojamento
         WHERE
-            I.imagem_principal = 1 AND A.regiao = '$regiao_segura'
+            I.imagem_principal = 1 AND A.regiao = '$regiao_segura' AND a.estado = 1
         GROUP BY
             A.id_alojamento
         ORDER BY 
@@ -34,14 +34,14 @@ function getAlojamentosPorRegiao($link, $regiao) {
     return [];
 }
 
-// --- 2. LÓGICA DE TRATAMENTO DA REGIÃO E MAPAS DE PREPOSIÇÕES ---
+// 1. LÓGICA DE TRATAMENTO DA REGIÃO E MAPAS DE PREPOSIÇÕES
 
-// 2.1 Receber o nome da região da URL. Usamos a versão limpa (escaped) para a DB e a original para o mapeamento.
+// 1.1 Receber o nome da região da URL. Usamos a versão limpa (escaped) para a DB e a original para o mapeamento.
 $regiao_selecionada = isset($_GET['regiao']) ? mysqli_real_escape_string($link, $_GET['regiao']) : 'Portugal';
 $regiao_para_mapa = isset($_GET['regiao']) ? $_GET['regiao'] : 'Portugal'; // Não escapada para corresponder às chaves do array
 
 
-// 2.2 Mapeamento de Prefixos (na, no, nos, em)
+// 1.2 Mapeamento de Prefixos (na, no, nos, em)
 $prefixos_regiao = [
     'Açores' => 'nos',
     'Aveiro' => 'em',
@@ -56,15 +56,14 @@ $prefixos_regiao = [
     'Portugal' => 'em'
 ];
 
-// 2.3 Determinar prefixo e construir TÍTULO
+// 1.3 Determinar prefixo e construir TÍTULO
 $prefixo_titulo = $prefixos_regiao[$regiao_para_mapa] ?? 'em'; 
 
 $pageTitle = 'Alojamentos ' . htmlspecialchars($prefixo_titulo) . ' ' . htmlspecialchars($regiao_selecionada);
 $pageSubtitle = 'Descubra as melhores estadias que temos para si!';
 
-// --- 3. CHAMADA DA FUNÇÃO PARA OBTER DADOS ---
+// 2. CHAMADA DA FUNÇÃO PARA OBTER DADOS
 $alojamentos_regiao = getAlojamentosPorRegiao($link, $regiao_selecionada);
-
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +71,7 @@ $alojamentos_regiao = getAlojamentosPorRegiao($link, $regiao_selecionada);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $pageTitle; ?> - ESPAÇO LUSITANO</title>
+    <title>ALOJAMENTO POR REGIÃO | ESPAÇO LUSITANO</title>
     <link rel="icon" type="image/png" href="imagens/FAVICON.ico">
 
     <meta name="description" content="<?php echo htmlspecialchars($pageSubtitle); ?>">

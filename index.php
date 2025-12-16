@@ -2,22 +2,17 @@
 session_start();
 require 'dbconnection.php'; 
 
-// --- 1. VARIÁVEIS DE CABEÇALHO ---
 $pageTitle = 'Encontre a sua próxima estadia';
 $pageSubtitle = 'Encontre promoções em hóteis, apartamentos e muito mais...';
 
-
-// --- 2. FUNÇÃO PRINCIPAL: BUSCA DE ALOJAMENTOS ---
+// 1. FUNÇÃO PRINCIPAL: ALOJAMENTOS
 /**
- * Busca alojamentos, incluindo imagem principal e avaliação média calculada.
- * Esta função utiliza Prepared Statements para segurança.
- *
  * @param mysqli $link Conexão com a base de dados.
  * @param int $limit Limite de resultados.
  * @param string $orderBy Critério de ordenação ('avaliacao_media' ou 'max_desconto').
  * @param float $min_avaliacao Nota mínima de avaliação (usado para "Melhor Avaliados").
  * @return array Lista de alojamentos.
-    */
+ */
     function getAlojamentos($link, $limit = 4, $orderBy = 'avaliacao_media', $min_avaliacao = 0) {
     
     $orderByColumn = 'avaliacao_media';
@@ -38,8 +33,8 @@ $pageSubtitle = 'Encontre promoções em hóteis, apartamentos e muito mais...';
         $orderByColumn = '(A.preco_base - A.preco_final)'; 
         $whereCondition .= " AND A.preco_final IS NOT NULL AND A.preco_final < A.preco_base";
     }
-    
-    // Montagem da Query SQL - NOTA: ORDER BY e LIMIT não podem ser parâmetros '?'
+
+    // Montagem da Query SQL
     $query = "
         SELECT 
             A.id_alojamento, A.nome, A.regiao, A.localizacao, A.preco_base, A.preco_final, A.ponto_forte,
@@ -52,7 +47,7 @@ $pageSubtitle = 'Encontre promoções em hóteis, apartamentos e muito mais...';
         LEFT JOIN
             avaliacoes AS T ON A.id_alojamento = T.id_alojamento
         WHERE
-            $whereCondition
+            $whereCondition AND a.estado = 1
         GROUP BY
             A.id_alojamento
         $havingCondition
@@ -62,8 +57,7 @@ $pageSubtitle = 'Encontre promoções em hóteis, apartamentos e muito mais...';
             $limit
     ";
     
-    // Execução simples (como não temos input externo variável, é seguro manter o mysqli_query
-    // A segurança do $min_avaliacao foi tratada com (float)
+    // Execução simples
     $result = mysqli_query($link, $query);
     
     if ($result) {
@@ -73,12 +67,12 @@ $pageSubtitle = 'Encontre promoções em hóteis, apartamentos e muito mais...';
 }
 
 
-// --- 3. BUSCA DOS DADOS PARA AS SECÇÕES ---
+// 2. BUSCA DOS DADOS PARA AS SECÇÕES
 
-// 3.1. Busca as Ofertas do Mês (Ordena pelo MAIOR valor poupado)
+// 2.1. Busca as Ofertas do Mês
 $ofertas = getAlojamentos($link, 4, 'max_desconto');
 
-// 3.2. Busca os Melhor Avaliados (Ordena pela avaliação média >= 9.0)
+// 2.2. Busca os Melhor Avaliados
 $melhorAvaliados = getAlojamentos($link, 4, 'avaliacao_media', 9.0);
 ?>
 
@@ -87,13 +81,14 @@ $melhorAvaliados = getAlojamentos($link, 4, 'avaliacao_media', 9.0);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PÁGINA INICIAL - ESPAÇO LUSITANO</title>
+    <title>PÁGINA INICIAL | ESPAÇO LUSITANO</title>
     <link rel="icon" type="image/png" href="imagens/FAVICON.ico">
     <script src="https://cdn.tailwindcss.com"></script> 
 </head>
 
 <body class="bg-gray-50 font-sans flex flex-col min-h-screen">
-    <?php include 'includes/header.php'; // Inclui o cabeçalho de navegação (logo, perfil) ?>
+
+    <?php include 'includes/header.php'; ?>
 
     <nav class="h-2 bg-[#c8c8b2]"></nav>
 
@@ -120,7 +115,7 @@ $melhorAvaliados = getAlojamentos($link, 4, 'avaliacao_media', 9.0);
                         // Determina se deve riscar o preço original
                         $tem_desconto = $alojamento['preco_final'] !== null && $alojamento['preco_final'] < $alojamento['preco_base'];
                         
-                        // Obtém a avaliação CALCULADA (avaliacao_media é o alias do AVG)
+                        // Obtém a avaliação CALCULADA
                         $avaliacao_raw = $alojamento['avaliacao_media'];
                         $avaliacao = $avaliacao_raw !== null && $avaliacao_raw > 0 
                             ? number_format($avaliacao_raw, 1) 

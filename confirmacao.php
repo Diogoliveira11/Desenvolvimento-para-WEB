@@ -9,7 +9,7 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
 
 $id_reserva = isset($_GET['reserva']) ? mysqli_real_escape_string($link, $_GET['reserva']) : exit("ID de Reserva em falta.");
 
-// 2. BUSCAR DETALHES DA RESERVA E DO ALOJAMENTO
+// 1. BUSCAR DETALHES DA RESERVA E DO ALOJAMENTO
 $query_reserva = "
     SELECT 
         R.*, 
@@ -32,7 +32,7 @@ if (!$result_reserva || mysqli_num_rows($result_reserva) === 0) {
 
 $reserva = mysqli_fetch_assoc($result_reserva);
 
-// 3. Formatação de Datas e Textos
+// 2. Formatação de Datas e Textos
 $dias_semana = ['Sun' => 'Domingo', 'Mon' => 'Segunda', 'Tue' => 'Terça', 'Wed' => 'Quarta', 'Thu' => 'Quinta', 'Fri' => 'Sexta', 'Sat' => 'Sábado'];
 
 function get_dia_pt(\DateTime $date, array $map) {
@@ -61,7 +61,7 @@ $texto_noites = $num_noites > 1 ? 'noites' : 'noite';
 $preco_total_formatado = number_format($reserva['preco_total'], 2, ',', '.');
 $id_alojamento_fk = $reserva['id_alojamento']; 
 
-// Lógica de Negócio: O botão de avaliação só aparece se a data de check-out passou
+// Lógica de Negócio
 $check_out_dt_full = new DateTime($reserva['data_check_out'] . ' 12:00:00'); // Assume o check-out é ao meio-dia
 $hoje = new DateTime();
 $pode_avaliar = $check_out_dt_full < $hoje; 
@@ -97,7 +97,7 @@ $pode_avaliar = $check_out_dt_full < $hoje;
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
             </svg>
-            <span class="font-normal">Hóspedes: <?php echo $reserva['num_hospedes']; ?></span>
+            <span class="font-normal">Quartos: <?php echo $reserva['num_quartos']; ?></span>
         </p>
         
         <p class="flex items-center gap-2 font-bold text-gray-900 border-t pt-2">

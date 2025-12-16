@@ -1,19 +1,19 @@
 <?php
-// 1. Verifica o estado de login
+
 $logado = isset($_SESSION['logado']) && $_SESSION['logado'] === true;
 
-// 2. Prepara o nome do utilizador se estiver logado
+// 1. Prepara o nome do utilizador se estiver logado
 $nomeUtilizador = $logado ? htmlspecialchars($_SESSION['utilizador']) : '';
 
-// 3. Aceita variáveis para o Título e Subtítulo
+// 2. Aceita variáveis para o Título e Subtítulo
 $headerTitle = isset($pageTitle) ? $pageTitle : 'ESPAÇO LUSITANO';
 $headerSubtitle = isset($pageSubtitle) ? $pageSubtitle : 'Encontre promoções em hóteis, apartamentos e muito mais...'; 
 
-// 4. Deteta as páginas
+// 3. Deteta as páginas
 $currentPage = basename($_SERVER['PHP_SELF']);
 $isPerfilPage = ($currentPage == 'perfil.php' || $currentPage == 'alterarpass.php' || $currentPage == 'apagarconta.php'); 
 
-// 5. Deteta as páginas onde o botão VOLTAR é NECESSÁRIO
+// 4. Deteta as páginas onde o botão VOLTAR é NECESSÁRIO
 $showVoltar = ($currentPage == 'alojamento.php' || 
                $currentPage == 'ofertasdomes.php' ||  
                $currentPage == 'suporte.php' || 
@@ -22,15 +22,14 @@ $showVoltar = ($currentPage == 'alojamento.php' ||
                $currentPage == 'alterarpass.php' || 
                $currentPage == 'apagarconta.php' ||
                $currentPage == 'alojamentoregiao.php' ||
-               $currentPage == 'checkout.php' ||
+               $currentPage == 'reserva.php' ||
                $currentPage == 'confirmacao.php' || 
                $currentPage == 'avaliaralojamento.php'); 
 
-// 6. Determina onde o SUPORTE deve aparecer (em todo o lado exceto na sua própria página)
+// 5. Determina onde o SUPORTE deve aparecer
 $showSuporte = ($currentPage != 'suporte.php');
 
-// 7. Determina se deve mostrar o menu de perfil no desktop/mobile
-// Esconde o menu de perfil se estiver numa página relacionada com o perfil 
+// 6. Determina se deve mostrar o menu de perfil no desktop/mobile
 $showProfileMenu = $logado && !$isPerfilPage; 
 
 $homeLink = 'index.php';
@@ -77,17 +76,17 @@ $homeLink = 'index.php';
                   <span class="font-medium"><?php echo $nomeUtilizador; ?></span>
                 </a>
                 <div class="border-t border-gray-100 my-1"></div>
-                <a href="logout.php" class="flex items-center px-4 py-2 text-sm text-red-600 hover:bg-[#e5e5dd] font-medium transition-colors duration-200">
+                <a href="auth/logout.php" class="flex items-center px-4 py-2 text-sm text-red-600 hover:bg-[#e5e5dd] font-medium transition-colors duration-200">
                   <svg class="w-4 h-4 mr-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3H7.5A2.25 2.25 0 0 0 5.25 5.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l4.5 4.5m0 0L12 18m4.5-4.5H5.25" />
                   </svg>
-                  LOGOUT
+                  SAIR
                 </a>
               </div>
             </div>
           </div>
         <?php elseif (!$logado): ?>
-          <a href="login.php" 
+          <a href="auth/login.php" 
             class="bg-[#c8c8b2] text-[#565656] font-bold rounded-lg px-2 py-1 lg:px-3 lg:py-2 xl:px-4 text-sm lg:text-base xl:text-lg
                   hover:bg-[#565656] hover:text-white hover:-translate-y-0.5 transition-transform duration-300">
             ENTRAR
@@ -95,10 +94,10 @@ $homeLink = 'index.php';
         <?php endif; ?>
 
         <?php if ($showSuporte): ?>
-          <a href="suporte.php" 
-            class="flex items-center justify-center w-7 h-7 lg:w-8 lg:h-8 xl:w-10 xl:h-10 cursor-pointer hover:-translate-y-0.5 transition-transform duration-300">
-            <img src="imagens/SUPORTE.png" class="w-full h-full object-contain" alt="Suporte">
-          </a>
+            <a href="suporte.php" 
+                class="flex items-center justify-center w-7 h-7 lg:w-8 lg:h-8 xl:w-10 xl:h-10 cursor-pointer hover:-translate-y-0.5 transition-transform duration-300">
+                <img src="imagens/SUPORTE.png" class="w-full h-full object-contain rounded-full" alt="Suporte">  
+            </a>
         <?php endif; ?>
 
     </div>
@@ -123,13 +122,13 @@ $homeLink = 'index.php';
             <span class="text-sm font-bold text-[#565656]"><?php echo $nomeUtilizador; ?></span>
           </a>
         <?php elseif (!$logado): ?>
-          <a href="login.php" class="flex items-center px-4 py-2 text-sm text-[#565656] hover:bg-[#e5e5dd] font-medium transition-colors duration-200">
+          <a href="auth/login.php" class="flex items-center px-4 py-2 text-sm text-[#565656] hover:bg-[#e5e5dd] font-medium transition-colors duration-200">
             <svg class="w-4 h-4 mr-3 stroke-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
             </svg>
             ENTRAR
           </a>
-          <a href="signin.php" class="flex items-center px-4 py-2 text-sm text-[#565656] hover:bg-[#e5e5dd] font-medium transition-colors duration-200">
+          <a href="registo.php" class="flex items-center px-4 py-2 text-sm text-[#565656] hover:bg-[#e5e5dd] font-medium transition-colors duration-200">
             <svg class="w-4 h-4 mr-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM3 20a6 6 0 0 1 12 0v1H3v-1z"></path>
             </svg>
@@ -161,11 +160,11 @@ $homeLink = 'index.php';
 
         <?php if ($logado && !$isPerfilPage): // SÓ MOSTRA SE LOGADO E NÃO ESTIVER NO PERFIL ?>
           <div class="border-t border-gray-100 my-1"></div>
-          <a href="logout.php" class="flex items-center px-4 py-2 text-sm text-red-600 hover:bg-[#e5e5dd] font-medium transition-colors duration-200">
+          <a href="auth/logout.php" class="flex items-center px-4 py-2 text-sm text-red-600 hover:bg-[#e5e5dd] font-medium transition-colors duration-200">
             <svg class="w-4 h-4 mr-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3H7.5A2.25 2.25 0 0 0 5.25 5.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l4.5 4.5m0 0L12 18m4.5-4.5H5.25" />
             </svg>
-            LOGOUT
+            SAIR
           </a>
         <?php endif; ?>
     </div>

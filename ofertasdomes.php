@@ -2,7 +2,6 @@
 session_start();
 require 'dbconnection.php'; 
 
-// 1. Configuração do Locale e Títulos
 setlocale(LC_TIME, 'pt_PT.utf8', 'portuguese', 'pt_PT'); 
 $mes_atual = strftime('%B');
 $mes_formatado = ucwords($mes_atual);
@@ -10,7 +9,7 @@ $mes_formatado = ucwords($mes_atual);
 $pageTitle = 'Ofertas do Mês';
 $pageSubtitle = 'Poupe em estadias para este mês de ' . htmlspecialchars($mes_formatado);
 
-// 2. Consulta SQL para buscar TODOS os alojamentos em OFERTA (com JOIN para a imagem)
+// 1. Consulta SQL para buscar TODOS os alojamentos em OFERTA
 $query_ofertas = "
     SELECT 
         A.id_alojamento, 
@@ -32,6 +31,7 @@ $query_ofertas = "
     WHERE 
         A.preco_final IS NOT NULL 
         AND A.preco_final < A.preco_base
+        AND a.estado = 1
     GROUP BY
         A.id_alojamento
     ORDER BY 
@@ -52,7 +52,7 @@ if ($result_ofertas) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OFERTAS DO MÊS - ESPAÇO LUSITANO</title>
+    <title>OFERTAS DO MÊS | ESPAÇO LUSITANO</title>
     <link rel="icon" type="image/png" href="imagens/FAVICON.ico">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -92,8 +92,7 @@ if ($result_ofertas) {
 
                         $preco_base = $alojamento['preco_base'];
                         $preco_final = $alojamento['preco_final'];
-                        
-                        // Se a imagem falhar, usamos um placeholder, mas a query deve trazer a imagem principal
+                    
                         $imagem = $alojamento['imagem_principal'] ?? 'imagens/placeholder.png'; 
                         
                         $tem_desconto = true; 

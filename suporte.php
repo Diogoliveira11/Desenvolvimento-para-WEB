@@ -13,7 +13,7 @@ $pageSubtitle = 'Esclareça todas as suas dúvidas!';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SUPORTE - ESPAÇO LUSITANO</title>
+  <title>SUPORTE | ESPAÇO LUSITANO</title>
   <link rel="icon" type="image/png" href="imagens/FAVICON.ico">
   <link href="css/nav.css" rel="stylesheet">
 
@@ -55,7 +55,7 @@ $pageSubtitle = 'Esclareça todas as suas dúvidas!';
         </div>
         <div class="subquestions hidden border-b border-gray-200" id="fazerreserva">
             <div class="subquestion p-4 bg-gray-50 text-gray-700">
-            Após encontrar o alojamento desejado, clique nele para aceder à página de detalhes, poderá ver todas as informações, fotos e preços. Para reservar, utilize os contactos fornecidos pelo site.          </div>
+            Após encontrar o alojamento desejado, clique nele para aceder à página de detalhes, poderá ver todas as informações, fotos e preços. Para reservar, coloca as datas de check-in e check-out e o número de hóspedes. De seguida, terá que preencher todos os dados pessoais e realizar o pagamento, após isso a reserva foi concluída com sucesso!</div>
             </div>
         </div>
 
@@ -64,7 +64,7 @@ $pageSubtitle = 'Esclareça todas as suas dúvidas!';
         </div>
         <div class="subquestions hidden border-b border-gray-200" id="histreservas">
             <div class="subquestion p-4 bg-gray-50 text-gray-700">
-              Para consultar o seu histórico de reservas, basta aceder à sua Área Pessoal e selecionar a opção "Histórico de Reservas". Aí encontrará uma lista completa de todas as suas reservas anteriores e actuais, com detalhes como datas, valores e estados das reservas.                         
+              Para consultar o seu histórico de reservas, basta aceder ao seu perfil e deparar-se-à com todos os seus alojamentos reservados, cancelados e/ou confirmados. Aí encontrará uma lista completa de todas as suas reservas anteriores e actuais, com detalhes como datas, valores e estados das reservas.                         
             </div>
         </div>
         
@@ -73,7 +73,7 @@ $pageSubtitle = 'Esclareça todas as suas dúvidas!';
         </div>
         <div class="subquestions hidden border-b border-gray-200" id="alterarreserva">
             <div class="subquestion p-4 bg-gray-50 text-gray-700">
-             Para cancelar ou alterar uma reserva, terá que contactar o próprio alojamento utilizando os contactos fornecidos pelo site.
+             Para cancelar ou alterar uma reserva, terá que aceder ao perfil onde visualizará todas as reservas. Poderá cancelar a mesma 2 dias antes da data de check-in.
             </div>
         </div>
 
@@ -82,26 +82,7 @@ $pageSubtitle = 'Esclareça todas as suas dúvidas!';
         </div>
         <div class="subquestions hidden border-b border-gray-200" id="destino">
             <div class="subquestion p-4 bg-gray-50 text-gray-700">
-            Após ter desfrutado do seu alojamento de destino poderá avaliar a sua experiência, acedendo à sua Área Pessoal → Histórico de Reservas e clicar em "Avaliar" junto à reserva concluída. As avaliações ajudam outros viajantes e os anfitriões a melhorarem os seus serviços.                         
-            </div>
-        </div>
-
-        <div class="main-question rounded-t-lg p-4 cursor-pointer font-semibold text-[#565656] border-b border-gray-200 hover:bg-[#d5d5cd]" onclick="toggleSubquestions('notificação')">
-          Como funcionam as notificações por e-mail e no navegador?
-        </div>
-        <div class="subquestions hidden border-b border-gray-200" id="notificação">
-            <div class="subquestion p-4 bg-gray-50 text-gray-700">
-            Pode gerir as suas preferências de notificação na sua Área Pessoal → Definições de Notificações. 
-            Pode optar por receber alertas por e-mail sobre promoções, reservas e actualizações e notificações no navegador para lembrete de check-in, avaliações pendentes e ofertas especiais.                 
-            </div>
-        </div>
-
-        <div class="main-question rounded-t-lg p-4 cursor-pointer font-semibold text-[#565656] border-b border-gray-200 hover:bg-[#d5d5cd]" onclick="toggleSubquestions('partilhar')">
-          Como posso partilhar as minhas viagens nas redes sociais?
-        </div>
-        <div class="subquestions hidden border-b border-gray-200" id="partilhar">
-            <div class="subquestion p-4 bg-gray-50 text-gray-700">
-            Após aceder à sua Área Pessoal → As Minhas Viagens. Seleccione a viagem que deseja partilhar e clique no ícone da rede social pretendida (Facebook, Instagram, Twitter, etc.). Pode partilhar tanto reservas futuras como experiências já concluídas.       
+            Após ter desfrutado do seu alojamento de destino poderá avaliar a sua experiência, acedendo ao seu perfil → Minhas reservas e clicar em "Avaliar estadia". As avaliações ajudam outros hóspedes a escolher o seu melhor destino.                         
             </div>
         </div>
 
@@ -119,7 +100,7 @@ $pageSubtitle = 'Esclareça todas as suas dúvidas!';
         </div>
         <div class="subquestions hidden border-b border-gray-200" id="problemas">
             <div class="subquestion p-4 bg-gray-50 text-gray-700">
-            Caso encontre dificuldades, consulte o menu de suporte na barra de navegação. Se o problema persistir, contacte o nosso suporte através do e-mail: suporte@espacolusitano.pt. 
+            Caso encontre dificuldades, contacte o nosso suporte através do e-mail: suporte@espacolusitano.pt. 
             </div>
         </div>
         

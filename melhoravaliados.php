@@ -5,7 +5,7 @@ require 'dbconnection.php';
 $pageTitle = 'Alojamento melhor avaliados';
 $pageSubtitle = 'Alojamentos com pontuação de 9.0 ou superior';
 
-// 2. Consulta SQL para buscar TODOS os alojamentos com avaliação >= 9.0
+// 1. Consulta SQL para buscar TODOS os alojamentos com avaliação >= 9.0
 $query_avaliados = "
     SELECT 
         A.id_alojamento, 
@@ -28,7 +28,8 @@ $query_avaliados = "
         imagens I ON A.id_alojamento = I.id_alojamento
     WHERE
         -- Filtra a imagem principal ANTES do GROUP BY
-        I.imagem_principal = 1
+        I.imagem_principal = 1 
+        AND a.estado = 1
     GROUP BY
         A.id_alojamento
     -- FILTRA o resultado da média calculada
@@ -51,7 +52,7 @@ if ($result_avaliados) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MELHOR AVALIADOS - ESPAÇO LUSITANO</title>
+    <title>MELHOR AVALIADOS | ESPAÇO LUSITANO</title>
     <link rel="icon" type="image/png" href="imagens/FAVICON.ico">
 
     <script src="https://cdn.tailwindcss.com"></script>
